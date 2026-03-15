@@ -37,9 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', #agrega Django REST Framework para construir APIs
+    'corsheaders', #agrega django-cors-headers para manejar CORS
+    'clients',
+    'vehicles',
+    'parking',
+    'payments',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True  # Permite solicitudes desde cualquier origen (útil para desarrollo, pero no recomendado para producción)
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', #activa el middleware de CORS
+    'django.middleware.security.SecurityMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
