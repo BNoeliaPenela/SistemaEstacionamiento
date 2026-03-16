@@ -7,6 +7,13 @@ class Estadia(models.Model):
     fecha_ingreso = models.DateTimeField(auto_now_add=True)
     fecha_salida = models.DateTimeField(blank=True, null=True)
 
+    precio = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=True,
+        blank=True
+    )
+
     activa = models.BooleanField(default=True)
 
     def __str__(self):
