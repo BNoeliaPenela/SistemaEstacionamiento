@@ -19,5 +19,11 @@ from django.urls import path, include #Importar la función include de Django, q
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('parking.urls')), 
+    path('api/parking/', include('parking.urls')), 
+    path('api/clients/', include('clients.urls')),
+    path('api/vehicles/', include('vehicles.urls')),
+    path('api/payments/', include('payments.urls')),
+    path('api/backup/', include('backup.urls')),
+    path('api/', include('utils.urls')),
+
 ]

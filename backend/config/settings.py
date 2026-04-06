@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'vehicles',
     'parking',
     'payments',
+    'backup',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # Permite solicitudes desde cualquier origen (útil para desarrollo, pero no recomendado para producción)
@@ -108,13 +109,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'utils.exceptions.custom_exception_handler'
+}
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
