@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial;
+        }
+        h1 {
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Ficha de Cliente</h1>
+
+<div class="section">
+    <strong>Nombre:</strong> {{ cliente.nombre }} <br>
+    <strong>Teléfono:</strong> {{ cliente.telefono }}
+</div>
+
+<div class="section">
+    <h3>Vehículos</h3>
+    <ul>
+        {% for v in vehiculos %}
+        <li>{{ v.patente }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="section">
+    <h3>Historial de Pagos</h3>
+    <ul>
+        {% for p in pagos %}
+        <li>{{ p.fecha }} - ${{ p.monto }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
