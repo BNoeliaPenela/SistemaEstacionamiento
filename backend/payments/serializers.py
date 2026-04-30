@@ -68,9 +68,12 @@ class PagoSerializer(serializers.ModelSerializer):
         data = super().to_representation(instance)
 
         data["patente"] = instance.estadia.vehiculo.patente
+        data["marca"] = instance.estadia.vehiculo.marca
+        data["modelo"] = instance.estadia.vehiculo.modelo
         data["cliente"] = instance.estadia.vehiculo.cliente.nombre
         data["tipo"] = instance.tipo
         data["es_reverso"] = instance.tipo == "reverso"
+
 
         return data
     

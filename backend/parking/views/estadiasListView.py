@@ -1,53 +1,53 @@
-from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.filters import SearchFilter
 from parking.serializers import EstadiaSerializer
 from utils.fechas import obtener_rango_fechas
 from parking.models import Estadia
+from django.utils.timezone import make_aware
+from datetime import datetime
 
+class EstadiasListView(ListAPIView):
 
-class EstadiasListView(APIView):
-
-    
-    queryset = Estadia.objects.all()
     serializer_class = EstadiaSerializer
+    queryset = Estadia.objects.all()
 
     filter_backends = [SearchFilter]
     search_fields = [
         'vehiculo__patente',
         'vehiculo__cliente__nombre',
         'vehiculo__cliente__dni'
-        ]
+    ]
 
-    def get(self, request):
+    def get_queryset(self):
 
-        filtro = request.GET.get("filtro")
+        queryset = Estadia.objects.all()
+
+        # 🔎 filtro por fecha
+        filtro = self.request.GET.get("filtro")
 
         if filtro:
             inicio, fin = obtener_rango_fechas(filtro)
+            
 
+            print("Inicio:", inicio)
+            print("Fin:", fin)
+            print("Queryset count:", queryset.count())
             if inicio and fin:
-                estadias = estadias.filter(
-                    fecha_entrada__date__range=(inicio, fin)
+                inicio_dt = make_aware(datetime.combine(inicio, datetime.min.time()))   
+                fin_dt = make_aware(datetime.combine(fin, datetime.max.time()))
+                print("Inicio DT:", inicio_dt)
+                print("Fin DT:", fin_dt)
+                queryset = queryset.filter(
+                    fecha_entrada__date__range=(inicio_dt, fin_dt)
                 )
-        activa = request.GET.get("activa")
+            else:
+                print("Filtro inválido:", filtro)    
 
-        estadias = Estadia.objects.all()
+        # 🔎 filtro activa
+        activa = self.request.GET.get("activa")
 
         if activa == "true":
-            estadias = estadias.filter(activa=True)
+            queryset = queryset.filter(activa=True)
 
-        data = []
-
-        for e in estadias:
-
-            data.append({
-                "id": e.id,
-                "patente": e.vehiculo.patente,
-                "cliente": e.vehiculo.cliente.nombre,
-                "fecha_entrada": e.fecha_entrada,
-                "fecha_salida": e.fecha_salida_real,
-                "activa": e.activa
-            })
-
-        return Response(data)
+        return queryset

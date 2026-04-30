@@ -24,16 +24,18 @@ class EstadiaDetailView(RetrieveUpdateDestroyAPIView):
 
         estadia = self.get_object()
 
-        if estadia.activa:
-            return Response(
-                {"error": "No se puede eliminar una estadía activa"},
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
+         # si tiene pagos → NO eliminar
         if estadia.payments.exists():
             return Response(
-                {"error": "No se puede eliminar una estadía con pagos"},
-                status=status.HTTP_400_BAD_REQUEST
+                {"error": "No se puede eliminar una estadía con pagos registrados"},
+                status=400
+            )
+
+        # si NO está activa → tampoco
+        if not estadia.activa:
+            return Response(
+                {"error": "Solo se pueden eliminar estadías activas sin pagos"},
+                status=400
             )
 
         return super().delete(request, *args, **kwargs)

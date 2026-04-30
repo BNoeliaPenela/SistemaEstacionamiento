@@ -24,7 +24,7 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
             fecha_salida_estimada = fecha_entrada + timedelta(days=cantidad)
 
         elif tipo == 'mes':
-            fecha_salida_estimada = fecha_entrada + timedelta(days=30)
+            fecha_salida_estimada = fecha_entrada + timedelta(days=30 * cantidad)
 
         #else:fecha_salida_estimada = None
         validated_data["fecha_entrada"] = fecha_entrada
@@ -39,17 +39,26 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
 
         vehiculo = data.get("vehiculo")
 
+        
+        #  si no viene en PATCH, usar el actual
+        if not vehiculo and self.instance:
+            vehiculo = self.instance.vehiculo
+
         if not vehiculo:
             raise serializers.ValidationError(
                 "Debe seleccionar un vehículo"
             )
 
-        existe_activa = Estadia.objects.filter(
+        query = Estadia.objects.filter(
             vehiculo=vehiculo,
             activa=True
-        ).exists()
+        )
 
-        if existe_activa:
+        #  EXCLUIR la instancia actual en update
+        if self.instance:
+            query = query.exclude(id=self.instance.id)
+
+        if query.exists():
             raise serializers.ValidationError(
                 "Este vehículo ya tiene una estadía activa"
             )
@@ -63,6 +72,16 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
             raise serializers.ValidationError(
                 "No se permiten más de 30 días"
             )
+        estadias_con_deuda = Estadia.objects.filter(
+            vehiculo=vehiculo,
+            activa=False
+        )
+
+        for e in estadias_con_deuda:
+            if e.deuda() > 0:
+                raise serializers.ValidationError(
+                    "El vehículo tiene deuda pendiente"
+                )
         return data
     
     def validate_tipo_estadia(self, value):
@@ -111,7 +130,7 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
     def update(self, instance, validated_data):
 
         # No permitir cambiar el vehículo de una estadía
-        if "vehiculo" in validated_data:
+        if "vehiculo" in validated_data and validated_data["vehiculo"] != instance.vehiculo:
             raise serializers.ValidationError(
                 "No se puede cambiar el vehículo de una estadía"
             )

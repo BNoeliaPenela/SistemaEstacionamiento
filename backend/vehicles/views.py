@@ -58,6 +58,7 @@ class VehiculosListView(APIView):
             data.append({
                 "id": v.id,
                 "patente": v.patente,
+                "tipo": v.tipo,
                 "cliente": v.cliente.nombre,
                 "telefono": v.cliente.telefono,
                 "estacionado": estacionado

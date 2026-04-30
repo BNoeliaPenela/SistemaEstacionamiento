@@ -1,0 +1,77 @@
+[
+  {
+    "model": "clients.cliente",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cami",
+      "dni": "49234567",
+      "telefono": "2234567890",
+      "email": "cami@gmail.com",
+      "fecha_creacion": "2026-04-22T13:40:20.765Z"
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "patente": "DE345GT",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "color": "rojo",
+      "tipo": "auto"
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 2,
+    "fields": {
+      "cliente": 1,
+      "patente": "AD927BT",
+      "marca": "chevrolet",
+      "modelo": "prisma",
+      "color": "blanco",
+      "tipo": "auto"
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 1,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-04-22T13:41:43.370Z",
+      "fecha_salida_estimada": "2026-04-28T13:41:43.370Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "dia",
+      "cantidad": 6,
+      "precio": "10000.00",
+      "activa": true
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 2,
+    "fields": {
+      "vehiculo": 2,
+      "fecha_entrada": "2026-04-22T13:43:09.986Z",
+      "fecha_salida_estimada": "2026-04-27T13:43:09.986Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "dia",
+      "cantidad": 5,
+      "precio": "5000.00",
+      "activa": true
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 1,
+    "fields": {
+      "estadia": 1,
+      "monto": "10000.00",
+      "fecha_pago": "2026-04-22T13:41:56.703Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  }
+]

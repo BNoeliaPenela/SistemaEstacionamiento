@@ -1,5 +1,6 @@
 from django.urls import path
 
+from parking.views.vehiculoActivoView import VehiculoActivoView
 from parking.views.estadiaDetailView import EstadiaDetailView
 from parking.views.pdfEstacionados import AutosEstacionadosPDFView #Importar la función path de Django, que se utiliza para definir rutas URL en la aplicación.
 from .views.crearEstadiaView import CrearEstadiaView
@@ -16,4 +17,5 @@ urlpatterns = [
     path("dashboard/actividad/", ActividadRecienteView.as_view()),
     path("pdf/estacionados/", AutosEstacionadosPDFView.as_view()),
     path('<int:pk>/', EstadiaDetailView.as_view()),
+    path('vehiculo-activo/', VehiculoActivoView.as_view()),
 ]

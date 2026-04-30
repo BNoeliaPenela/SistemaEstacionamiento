@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.response import Response
 from django.utils import timezone
 from parking.models import Estadia
@@ -87,57 +87,47 @@ class CrearPagoView(APIView):
             "pago_id": pago.id,
             "warnings": warnings
         })
-class PagosListView(APIView):
-    queryset = Pago.objects.all().order_by('-fecha_pago')
+class PagosListView(ListAPIView):
+    
     serializer_class = PagoSerializer
 
     filter_backends = [SearchFilter]
     search_fields = [
         'estadia__vehiculo__patente',
         'estadia__vehiculo__cliente__nombre',
-        'estadia__vehiculo__cliente__dni'
+        'estadia__vehiculo__cliente__dni',
+        'metodo_pago'
     ]
 
-    def get(self, request):
-
-        fecha = request.GET.get("fecha")
-
-        pagos = Pago.objects.all()
+    def get_queryset(self):
         
-        filtro = request.GET.get("filtro")
+        queryset = Pago.objects.all().order_by('-fecha_pago')
+        
+        fecha = self.request.GET.get("fecha")
+        filtro = self.request.GET.get("filtro")
 
         if filtro:
             inicio, fin = obtener_rango_fechas(filtro)
 
             if inicio and fin:
-                pagos = pagos.filter(
+                queryset = queryset.filter(
                     fecha_pago__date__range=(inicio, fin)
                 )
 
         hoy = timezone.now().date()
 
         if fecha == "hoy":
-            pagos = pagos.filter(fecha_pago__date=hoy)
+            queryset = queryset.filter(fecha_pago__date=hoy)
 
         if fecha == "mes":
-            pagos = pagos.filter(
+            queryset = queryset.filter(
                 fecha_pago__month=hoy.month,
                 fecha_pago__year=hoy.year
             )
 
-        data = []
 
-        for p in pagos:
-            data.append({
-                "id": p.id,
-                "monto": p.monto,
-                "metodo": p.metodo_pago,
-                "fecha": p.fecha_pago,
-                "patente": p.estadia.vehiculo.patente,
-                "cliente": p.estadia.vehiculo.cliente.nombre
-            })
 
-        return Response(data)
+        return queryset
 
 class ReversarPagoView(APIView):
 

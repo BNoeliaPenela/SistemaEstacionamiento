@@ -58,7 +58,7 @@ function Sidebar({ open, setOpen }) {
             Pagos
           </Link>
 
-          <Link to="/backups" onClick={() => setOpen(false)}
+          <Link to="/backup" onClick={() => setOpen(false)}
             className="block p-2 rounded hover:bg-gray-100">
             Backups
           </Link>

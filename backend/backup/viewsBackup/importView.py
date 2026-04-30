@@ -52,7 +52,7 @@ class ImportBackupView(APIView):
                 f.write(backup_data)
 
             # 📂 2. GUARDAR ARCHIVO SUBIDO TEMPORALMENTE
-            with tempfile.NamedTemporaryFile(delete=False) as tmp:
+            with tempfile.NamedTemporaryFile(delete=False, suffix='.json') as tmp:
                 for chunk in file.chunks():
                     tmp.write(chunk)
                 tmp_path = tmp.name

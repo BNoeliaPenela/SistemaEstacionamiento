@@ -8,6 +8,7 @@ class Vehiculo(models.Model):
     marca = models.CharField(max_length=50)
     modelo = models.CharField(max_length=50)
     color = models.CharField(max_length=30)
+    tipo = models.CharField(max_length=30, default="Auto")
 
     def __str__(self):
         return f"{self.patente} - {self.marca}"  # Agrega la marca al string de representación para facilitar la identificación del vehículo

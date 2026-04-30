@@ -8,8 +8,7 @@ from rest_framework import status
 from datetime import datetime
 from django.utils import timezone
 from ..models import Estadia
-from payments.models import Pago
-from vehicles.models import Vehiculo
+
 from ..serializers import EstadiaSerializer
 from ..utils import calcular_precio_estadia
 

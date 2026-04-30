@@ -3,9 +3,11 @@ from .models import Vehiculo
 import re # Importamos el módulo de expresiones regulares para validar el formato de la patente
 
 class VehiculoSerializer(serializers.ModelSerializer):
+    cliente_nombre = serializers.CharField(source='cliente.nombre', read_only=True)
     class Meta:
         model = Vehiculo
         fields = '__all__'
+        
 
     def validate_patente(self, value):
 

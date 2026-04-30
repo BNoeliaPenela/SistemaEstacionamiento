@@ -46,8 +46,11 @@ class ClientesListView(APIView):
             data.append({
                 "id": c.id,
                 "nombre": c.nombre,
+                "DNI": c.dni,
                 "telefono": c.telefono,
-                "vehiculos": c.cantidad_vehiculos
+                "vehiculos": c.cantidad_vehiculos,
+                "email": c.email,
+                "fecha_registro": c.fecha_creacion
             })
 
         return Response(data)
