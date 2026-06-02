@@ -19,7 +19,7 @@ def obtener_rango_fechas(filtro):
         fin = hoy
 
     elif filtro == "mes":
-        inicio = hoy.replace(day=1)
+        inicio = hoy - timedelta(days=30)
         fin = hoy
 
     else:

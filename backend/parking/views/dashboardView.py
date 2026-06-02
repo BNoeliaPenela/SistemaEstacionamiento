@@ -35,7 +35,8 @@ class DashboardView(APIView):
         ingresos_mes = pagos_mes.aggregate(total=Sum("monto"))["total"] or 0
 
         #Deudores
-        deudores = sum(1 for e in estadias_activas if e.deuda() > 0)
+        #CAMBIO 22/5
+        deudores = sum(1 for e in estadias_activas if e.deuda() is not None and e.deuda() > 0)
 
         #Autos estacionados (detalle)
         autos_estacionados = []

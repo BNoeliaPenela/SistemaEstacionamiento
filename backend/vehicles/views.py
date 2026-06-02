@@ -77,38 +77,53 @@ class BuscarVehiculoView(APIView):
                 {"error": "Debe ingresar una patente"},
                 status=400
             )
-
-        try:
-            vehiculo = Vehiculo.objects.get(patente__iexact=patente)
-        except Vehiculo.DoesNotExist:
-            return Response({
-                "existe": False
+        
+        queryset_coincidencias = Vehiculo.objects.filter(patente__icontains=patente)
+        vehiculo_exacto = queryset_coincidencias.filter(patente__iexact=patente).first()
+        # 2. Intentamos ver si hay una coincidencia exacta para el flujo normal
+        sugerencias = queryset_coincidencias[:5]
+        sugerencias_data = []
+        for v in sugerencias:
+            
+            sugerencias_data.append({
+                "id": v.id,
+                "patente": v.patente,
+                # Usamos getattr por seguridad si los campos no existen en el modelo
+                "marca": getattr(v, 'marca', ''), 
+                "modelo": getattr(v, 'modelo', '')
             })
 
-        # Ver si está estacionado
-        estadia_activa = Estadia.objects.filter(
-            vehiculo=vehiculo,
-            activa=True
-        ).first()
-
         data = {
-            "existe": True,
-            "vehiculo": {
-                "id": vehiculo.id,
-                "patente": vehiculo.patente,
-                "cliente": vehiculo.cliente.nombre,
-                "telefono": vehiculo.cliente.telefono
-            },
-            "estacionado": bool(estadia_activa),
-            "estadia": None
+            "exists": bool(vehiculo_exacto),
+            "existe": bool(vehiculo_exacto),
+            "sugerencias": sugerencias_data,
+            "vehiculo": None
         }
 
-        if estadia_activa:
-            data["estadia"] = {
-                "id": estadia_activa.id,
-                "fecha_entrada": estadia_activa.fecha_entrada,
-                "tipo_estadia": estadia_activa.tipo_estadia
+        if vehiculo_exacto:
+            estadia_activa = Estadia.objects.filter(
+                vehiculo=vehiculo_exacto,
+                activa=True
+            ).first()
+
+            # Validación de seguridad para el cliente en el vehículo exacto
+            nombre_cliente_exacto = vehiculo_exacto.cliente.nombre if vehiculo_exacto.cliente else "Sin Cliente"
+            telefono_cliente_exacto = vehiculo_exacto.cliente.telefono if vehiculo_exacto.cliente else "N/A"
+
+            data["vehiculo"] = {
+                "id": vehiculo_exacto.id,
+                "patente": vehiculo_exacto.patente,
+                "cliente": nombre_cliente_exacto if vehiculo_exacto.cliente else "Sin Cliente",
+                "telefono": telefono_cliente_exacto if vehiculo_exacto.cliente else "N/A"
             }
+            
+            data["estacionado"] = bool(estadia_activa)
+            if estadia_activa:
+                data["estadia"] = {
+                    "id": estadia_activa.id,
+                    "fecha_entrada": estadia_activa.fecha_entrada,
+                    "tipo_estadia": estadia_activa.tipo_estadia
+                }
 
         return Response(data)
     

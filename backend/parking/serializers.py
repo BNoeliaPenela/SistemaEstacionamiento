@@ -7,7 +7,7 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
     class Meta: #Clase interna que define la configuración del serializer.
         model = Estadia  #Especifica que este serializer se basa en el modelo Estadia.
         fields = '__all__'  #Indica que se deben incluir todos los campos del modelo Estadia en la serialización.
-        read_only_fields = ['fecha_salida_estimada', 'activa']
+        read_only_fields = ['fecha_salida_estimada', 'activa'] 
 
     def create(self, validated_data):
 
@@ -137,17 +137,18 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
 
         # Permitir actualizar tipo_estadia y cantidad, pero recalcular fecha_salida_estimada
         tipo = validated_data.get("tipo_estadia", instance.tipo_estadia)
-        cantidad = validated_data.get("cantidad", instance.cantidad)
+        cantidad = int(validated_data.get("cantidad", instance.cantidad))
 
         if tipo and cantidad:
             from datetime import timedelta
+            
 
             if tipo == "hora":
                 instance.fecha_salida_estimada = instance.fecha_entrada + timedelta(hours=cantidad)
             elif tipo == "dia":
                 instance.fecha_salida_estimada = instance.fecha_entrada + timedelta(days=cantidad)
             elif tipo == "mes":
-                instance.fecha_salida_estimada = instance.fecha_entrada + timedelta(days=30)
+                instance.fecha_salida_estimada = instance.fecha_entrada + timedelta(days=30 * cantidad)
 
         return super().update(instance, validated_data)
     

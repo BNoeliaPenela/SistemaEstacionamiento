@@ -10,6 +10,37 @@ from ..utils import calcular_precio_estadia
 
 class EgresoVehiculoView(APIView): #Definición de una vista para registrar el egreso de un vehículo del estacionamiento utilizando la clase APIView, que permite manejar diferentes métodos HTTP. Esta vista se encargará de actualizar la estadía correspondiente al vehículo para marcarla como inactiva y calcular el precio de la estadía.
 
+
+    def get(self, request):
+        """
+        Maneja las búsquedas dinámicas del frontend.
+        Filtra las estadías activas cuya patente contenga los caracteres ingresados.
+        """
+        patente_query = request.GET.get("patente", "").upper()
+        
+        # Si no mandó nada o es muy corto, podés elegir no buscar, 
+        # pero para que no tire 404 devolvemos una lista vacía.
+        if not patente_query:
+            return Response({"sugerencias": []}, status=status.HTTP_200_OK)
+            
+        # Filtramos estadías que estén ACTIVAS y que coincidan parcialmente con la patente
+        estadias_activas = Estadia.objects.filter(
+            activa=True,
+            vehiculo__patente__icontains=patente_query # Asumo que tu modelo Estadia tiene una relación FK a 'vehiculo'
+        )
+        
+        sugerencias = []
+        for estadia in estadias_activas:
+            sugerencias.append({
+                "vehiculo_id": estadia.vehiculo.id,
+                "patente": estadia.vehiculo.patente,
+                "marca": estadia.vehiculo.marca if hasattr(estadia.vehiculo, 'marca') else "",
+                "modelo": estadia.vehiculo.modelo if hasattr(estadia.vehiculo, 'modelo') else "",
+                "fecha_entrada": estadia.fecha_entrada, # O el nombre de tu campo de ingreso
+                "deuda": estadia.deuda() # Aprovechamos tu método .deuda() para mostrarla en tiempo real
+            })
+            
+        return Response({"sugerencias": sugerencias}, status=status.HTTP_200_OK)
     
     def post(self, request): #Define un método post para manejar las solicitudes POST que se envían a esta vista. Este método se ejecutará cuando se intente registrar el egreso de un vehículo del estacionamiento.
 

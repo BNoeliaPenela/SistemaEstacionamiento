@@ -102,5 +102,13 @@ class EstadiaConfig(models.Model):
 
     def __str__(self):
         return f"Espacios: {self.total_espacios}"
+    
+
+class ConfigLicencia(models.Model):
+    fecha_limite = models.DateField()
+    frase_secreta = models.CharField(max_length=100, default="MIGARAGE123")
+
+    def __str__(self):
+        return f"Licencia válida hasta: {self.fecha_limite}"
 
     

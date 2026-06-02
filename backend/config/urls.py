@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include #Importar la función include de Django, que se utiliza para incluir otras configuraciones de URL en esta configuración principal.
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/parking/', include('parking.urls')), 
@@ -25,5 +26,6 @@ urlpatterns = [
     path('api/payments/', include('payments.urls')),
     path('api/backup/', include('backup.urls')),
     path('api/', include('utils.urls')),
+    
 
 ]

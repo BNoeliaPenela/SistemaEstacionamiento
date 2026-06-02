@@ -47,7 +47,12 @@ class EstadiasListView(ListAPIView):
         # 🔎 filtro activa
         activa = self.request.GET.get("activa")
 
+        queryset = queryset.order_by('-activa', '-fecha_entrada')
+
         if activa == "true":
             queryset = queryset.filter(activa=True)
+        elif activa == "false":
+            queryset = queryset.filter(activa=False)
 
         return queryset
+    

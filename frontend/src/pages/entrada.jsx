@@ -1,22 +1,64 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Importante: agregamos useEffect
 import api from "../api/axios";
 
 function Entrada() {
-
   const [patente, setPatente] = useState("");
+  const [sugerencias, setSugerencias] = useState([]); // Nuevo: para la lista desplegable
   const [vehiculo, setVehiculo] = useState(null);
   const [noExiste, setNoExiste] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState(""); // Nuevo: Mensaje de éxito
-  const [loading, setLoading] = useState(false); // Nuevo: Estado de carga
+  const [successMsg, setSuccessMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const [fechaActual, setFechaActual] = useState(new Date());
 
   const [form, setForm] = useState({
     tipo_estadia: "hora",
     cantidad: 1,
-    precio: ""
+    precio: "1000"
   });
 
-  // BUSCAR VEHÍCULO
+  useEffect(() => {
+    const timerReloj = setInterval(() => {
+      setFechaActual(new Date());
+    }, 1000);
+
+    // Limpieza al desmontar el componente
+    return () => clearInterval(timerReloj);
+  }, []);
+
+  // LÓGICA DE AUTOCOMPLETADO
+  useEffect(() => {
+    const buscarSugerencias = async () => {
+      // Solo buscamos si hay 2 o más caracteres para no saturar el servidor
+      if (patente.length > 1 && !vehiculo) {
+        try {
+          // Usamos tu endpoint de búsqueda existente
+          const res = await api.get(`/vehicles/buscar/?patente=${patente.toUpperCase()}`);
+          
+          // Si tu backend devuelve un objeto con "exists", lo manejamos así:
+          if (res.data.sugerencias) {
+              setSugerencias(res.data.sugerencias); 
+          } else if (res.data.exists) {
+              setSugerencias([res.data.vehicle]);
+          } else {
+              setSugerencias([]);
+          }
+        } catch (error) {
+          console.error("Error en sugerencias", error);
+        }
+      } else {
+        setSugerencias([]);
+      }
+    };
+
+    // "Debounce": esperamos 300ms antes de disparar la búsqueda para que sea fluida
+    const timer = setTimeout(buscarSugerencias, 300);
+    return () => clearTimeout(timer);
+  }, [patente, vehiculo]);
+
+
+  // BUSCAR VEHÍCULO (Manual con botón)
   const buscarVehiculo = async () => {
     if (!patente.trim()) {
       setErrorMsg("Por favor, ingrese una patente para buscar.");
@@ -29,10 +71,11 @@ function Entrada() {
       setSuccessMsg("");
       setNoExiste(false);
 
-      const res = await api.get(`/vehicles/search/?patente=${patente.toUpperCase()}`);
+      const res = await api.get(`/vehicles/buscar/?patente=${patente.toUpperCase()}`);
 
       if (res.data.exists) {
         setVehiculo(res.data.vehicle);
+        setSugerencias([]); // Cerramos sugerencias al encontrar
       } else {
         setVehiculo(null);
         setNoExiste(true);
@@ -46,26 +89,36 @@ function Entrada() {
 
   // INPUTS
   const handleChange = (e) => {
-    // Si el usuario cambia la patente, limpiamos estados previos
     if (e.target.name === "patente") {
-        setPatente(e.target.value.toUpperCase());
-        setErrorMsg("");
-        setNoExiste(false);
-        setVehiculo(null);
+      setPatente(e.target.value.toUpperCase());
+      setErrorMsg("");
+      setNoExiste(false);
+      setVehiculo(null);
     } else {
-        setForm({ ...form, [e.target.name]: e.target.value });
+      setForm({ ...form, [e.target.name]: e.target.value });
     }
+  };
+
+  // SELECCIONAR DESDE LA LISTA
+  const seleccionarSugerencia = (v) => {
+    setVehiculo(v);
+    setPatente(v.patente);
+    setSugerencias([]);
+    setNoExiste(false);
   };
 
   // REGISTRAR ENTRADA
   const registrarEntrada = async () => {
-    // Validaciones antes de llamar a la API
     if (!vehiculo) {
       setErrorMsg("Primero debe buscar y seleccionar un vehículo registrado.");
       return;
     }
     if (form.cantidad <= 0) {
       setErrorMsg("La cantidad debe ser al menos 1.");
+      return;
+    }
+    if (!form.precio || Number(form.precio) <= 0) {
+      setErrorMsg("El precio es obligatorio y debe ser mayor a 0 para estimar la estadía.");
       return;
     }
 
@@ -75,18 +128,15 @@ function Entrada() {
         vehiculo: vehiculo.id,
         tipo_estadia: form.tipo_estadia,
         cantidad: Number(form.cantidad),
-        precio: form.precio ? Number(form.precio) : null
+        precio: Number(form.precio)
       });
 
-      // Feedback de éxito
       setSuccessMsg(`¡Entrada registrada con éxito para la patente ${vehiculo.patente}!`);
       
-      // Reset total del formulario
       setVehiculo(null);
       setPatente("");
-      setForm({ tipo_estadia: "hora", cantidad: 1, precio: "" });
+      setForm({ tipo_estadia: "hora", cantidad: 1, precio: "1000" });
       
-      // Quitar mensaje de éxito después de 5 segundos
       setTimeout(() => setSuccessMsg(""), 5000);
 
     } catch (error) {
@@ -97,67 +147,89 @@ function Entrada() {
     }
   };
 
+  const botonDeshabilitado = loading || !vehiculo || !form.precio || Number(form.precio) <= 0;
+  
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div className="md:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 className="text-xl font-bold mb-6 text-gray-800 border-b pb-2">
-          Registrar Entrada de Vehículo
-        </h2>
+      <div className="md:col-span-2 bg-white p-6 rounded-2xl shadow-xs border border-gray-100 space-y-6">
+        <div className="border-b border-gray-100 pb-3">
+          <h2 className="text-xl font-bold text-gray-900 tracking-tight">
+            Registrar Entrada de Vehículo
+          </h2>
+        </div>
 
-        {/* MENSAJE DE ÉXITO */}
         {successMsg && (
-          <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded shadow-sm flex justify-between items-center animate-fade-in">
+          <div className="bg-emerald-50 border-l-4 border-emerald-500 text-emerald-800 p-4 rounded-r-xl shadow-2xs flex justify-between items-center font-bold text-sm">
             <span>{successMsg}</span>
-            <button onClick={() => setSuccessMsg("")} className="font-bold">×</button>
+            <button onClick={() => setSuccessMsg("")} className="font-black text-lg hover:text-emerald-950">×</button>
           </div>
         )}
 
-        {/* BUSCADOR */}
-        <div className="flex gap-2 mb-4">
-          <input
-            value={patente}
-            name="patente"
-            onChange={handleChange}
-            placeholder="Ej: ABC 123 o AF 123 BK"
-            className="border p-3 rounded-lg w-full focus:ring-2 focus:ring-blue-500 outline-none uppercase font-mono"
-          />
-          <button
-            onClick={buscarVehiculo}
-            disabled={loading}
-            className="bg-gray-800 text-white px-6 rounded-lg hover:bg-black transition-colors disabled:bg-gray-400"
-          >
-            {loading ? "..." : "Buscar"}
-          </button>
+        {/* BUSCADOR CON SUGERENCIAS */}
+        <div className="relative">
+          <div className="flex gap-2">
+            <input
+              value={patente}
+              name="patente"
+              onChange={handleChange}
+              autoComplete="off"
+              placeholder="Ej: ABC123 o AF123BK"
+              className="border border-gray-200 p-3 rounded-xl w-full focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none uppercase font-mono tracking-wider font-bold"
+            />
+            <button
+              onClick={buscarVehiculo}
+              disabled={loading}
+              className="bg-gray-900 text-white px-6 rounded-xl hover:bg-black font-black text-md transition-colors disabled:bg-gray-300"
+            >
+              {loading ? "..." : "Buscar"}
+            </button>
+          </div>
+
+          {/* LISTA DESPLEGABLE DE SUGERENCIAS */}
+          {sugerencias.length > 0 && !vehiculo && (
+            <ul className="absolute z-50 w-full bg-white border border-gray-200 mt-1 rounded-xl shadow-xl max-h-48 overflow-y-auto">
+              {sugerencias.map((s) => (
+                <li
+                  key={s.id}
+                  onClick={() => seleccionarSugerencia(s)}
+                  className="p-3 hover:bg-blue-50/50 cursor-pointer flex justify-between items-center border-b border-gray-50 last:border-none"
+                >
+                  <div>
+                    <span className="font-black text-md bg-gray-50 border border-gray-200/60 px-2 py-0.5 rounded text-gray-900 tracking-wide">{s.patente}</span>
+                    <span className="ml-3 text-gray-400 font-bold text-md uppercase">{s.marca} {s.modelo}</span>
+                  </div>
+                  <span className="text-blue-600 text-sm font-black uppercase tracking-wider">Seleccionar →</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
-        {/* MENSAJES DE ERROR */}
         {errorMsg && (
-          <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm mb-4 border border-red-100">
+          <div className="bg-red-50 text-red-700 p-3 rounded-xl text-md border border-red-100 font-bold">
             ⚠️ {errorMsg}
           </div>
         )}
 
-        {/* VEHÍCULO ENCONTRADO */}
         {vehiculo && (
-          <div className="bg-blue-50 border border-blue-100 p-4 rounded-lg mb-6 flex justify-between items-center">
-            <div>
-              <p className="text-xs text-blue-500 font-bold uppercase">Vehículo Identificado</p>
-              <p className="text-lg font-bold text-blue-900">{vehiculo.patente}</p>
-              <p className="text-blue-700">{vehiculo.marca} {vehiculo.modelo}</p>
+          <div className="bg-blue-50/50 border border-blue-100 p-4 rounded-xl flex justify-between items-center">
+            <div className="space-y-0.5">
+              <p className="text-xs text-blue-500 font-black uppercase tracking-wider">Vehículo Identificado</p>
+              <p className="text-lg font-black text-blue-900 tracking-wide uppercase">{vehiculo.patente}</p>
+              <p className="text-xs font-bold text-blue-700 uppercase">{vehiculo.marca} {vehiculo.modelo}</p>
             </div>
-            <span className="text-3xl">🚗</span>
+            <span className="text-2xl bg-white w-10 h-10 flex items-center justify-center rounded-xl border border-blue-200/50 shadow-2xs">🚗</span>
           </div>
         )}
 
-        {/* VEHÍCULO NO EXISTE */}
         {noExiste && (
-          <div className="bg-orange-50 border border-orange-200 p-4 rounded-lg mb-6">
-            <p className="text-orange-700 font-medium mb-3">
+          <div className="bg-amber-50/60 border border-amber-200/70 p-5 rounded-xl text-center space-y-3">
+            <p className="text-amber-800 text-md font-bold">
               Esta patente no figura en la base de datos de Garage.
             </p>
             <button
-              onClick={() => window.location.href = "/vehiculos"}
-              className="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-600 transition shadow-sm"
+              onClick={() => { window.location.href = `/vehiculos?nuevo=true&patente=${patente.toUpperCase()}`; }}
+              className="bg-amber-600 text-white px-4 py-2 rounded-xl text-md font-black hover:bg-amber-700 transition shadow-xs"
             >
               + Registrar Vehículo Nuevo
             </button>
@@ -165,14 +237,14 @@ function Entrada() {
         )}
 
         {/* FORMULARIO DE ESTADÍA */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 bg-gray-50 p-4 rounded-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-gray-50/50 border border-gray-100/80 p-4 rounded-xl">
           <div className="flex flex-col">
-            <label className="text-xs font-bold text-gray-500 mb-1 ml-1">Tipo de Estadía</label>
+            <label className="text-sm font-black text-gray-600 uppercase tracking-wider mb-1 ml-1">Tipo de Estadía</label>
             <select
               name="tipo_estadia"
               value={form.tipo_estadia}
               onChange={handleChange}
-              className="border p-3 rounded-lg bg-white"
+              className="border border-gray-200 p-3 rounded-xl bg-white font-bold text-gray-700 text-sm outline-none focus:border-blue-500"
             >
               <option value="hora">Por hora</option>
               <option value="dia">Por día</option>
@@ -181,69 +253,74 @@ function Entrada() {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-xs font-bold text-gray-500 mb-1 ml-1">Cantidad</label>
+            <label className="text-sm font-black text-gray-600 uppercase tracking-wider mb-1 ml-1">Cantidad</label>
             <input
               name="cantidad"
               type="number"
               min="1"
               value={form.cantidad}
               onChange={handleChange}
-              className="border p-3 rounded-lg"
+              className="border border-gray-200 p-3 rounded-xl font-bold text-gray-700 text-sm outline-none focus:border-blue-500"
             />
           </div>
 
           <div className="flex flex-col col-span-full">
-            <label className="text-xs font-bold text-gray-500 mb-1 ml-1">Precio</label>
+            <label className="text-sm font-black text-gray-600 uppercase tracking-wider mb-1 ml-1">Precio</label>
             <input
               name="precio"
               type="number"
+              min="1"
+              required // Exigido nativamente por el navegador
               value={form.precio}
               onChange={handleChange}
-              className="border p-3 rounded-lg"
-              placeholder="Dejar vacío para usar precio base"
+              className="border border-gray-200 p-3 rounded-xl font-bold text-gray-700 text-sm outline-none focus:border-blue-500"
+              placeholder="Ingresá la base estimada"
             />
           </div>
         </div>
 
         <button
           onClick={registrarEntrada}
-          disabled={loading || !vehiculo}
-          className="mt-8 w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 disabled:bg-gray-300 transition-all shadow-lg shadow-blue-100 disabled:shadow-none"
+          disabled={botonDeshabilitado}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-black text-lg transition-all shadow-md shadow-blue-500/10 disabled:bg-gray-200 disabled:text-gray-400 disabled:shadow-none"
         >
           {loading ? "Procesando..." : "Confirmar Registro de Entrada"}
         </button>
       </div>
 
-      {/* DERECHA (INFO ADICIONAL) */}
+      {/* COLUMNA LATERAL (RELOJ Y GUÍA) */}
       <div className="space-y-4">
-        <div className="bg-white p-5 rounded-xl shadow-sm border border-gray-100 text-center">
-          <p className="text-gray-400 uppercase text-xs font-black tracking-widest">Turno Actual</p>
-          <p className="text-3xl font-bold text-gray-800 my-1">
-            {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+        {/* TARJETA DEL RELOJ EN VIVO */}
+        <div className="bg-white p-5 rounded-2xl shadow-xs border border-gray-100 text-center border-t-4 border-t-indigo-500">
+          <p className="text-gray-400 uppercase text-md font-black tracking-widest">Turno Actual</p>
+          <p className="text-4xl font-black text-gray-900 my-1 font-mono tracking-tight">
+            {fechaActual.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
           </p>
-          <p className="text-gray-500 text-sm">{new Date().toLocaleDateString()}</p>
+          <p className="text-gray-400 text-md font-bold uppercase tracking-wider mt-1">
+            {fechaActual.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" })}
+          </p>
         </div>
 
-        <div className="bg-gray-800 p-5 rounded-xl text-white">
-          <h3 className="font-bold mb-3 flex items-center gap-2">
+        <div className="bg-gray-900 p-6 rounded-2xl text-white shadow-xs space-y-4">
+          <h3 className="font-black text-sm uppercase tracking-wider flex items-center gap-2 border-b border-gray-800 pb-2">
             <span>📋</span> Guía Rápida
           </h3>
-          <ul className="text-sm space-y-3 text-gray-300">
-            <li className="flex gap-2">
-              <span className="bg-gray-700 w-5 h-5 rounded-full flex items-center justify-center text-xs text-white">1</span>
-              Ingresá la patente del vehículo.
+          <ul className="text-md space-y-3.5 text-gray-400 font-medium">
+            <li className="flex gap-2.5 items-start">
+              <span className="bg-gray-800 w-5 h-5 rounded-md flex items-center justify-center text-sm font-black text-white shrink-0 border border-gray-700">1</span>
+              <span>Ingresá la patente del vehículo.</span>
             </li>
-            <li className="flex gap-2">
-              <span className="bg-gray-700 w-5 h-5 rounded-full flex items-center justify-center text-xs text-white">2</span>
-              Verificá que los datos del auto sean correctos.
+            <li className="flex gap-2.5 items-start">
+              <span className="bg-gray-800 w-5 h-5 rounded-md flex items-center justify-center text-sm font-black text-white shrink-0 border border-gray-700">2</span>
+              <span>Verificá o seleccioná de la lista desplegable.</span>
             </li>
-            <li className="flex gap-2">
-              <span className="bg-gray-700 w-5 h-5 rounded-full flex items-center justify-center text-xs text-white">3</span>
-              Elegí el tiempo de estadía.
+            <li className="flex gap-2.5 items-start">
+              <span className="bg-gray-800 w-5 h-5 rounded-md flex items-center justify-center text-sm font-black text-white shrink-0 border border-gray-700">3</span>
+              <span>Elegí el tipo de estadía correspondiente.</span>
             </li>
-            <li className="flex gap-2">
-              <span className="bg-gray-700 w-5 h-5 rounded-full flex items-center justify-center text-xs text-white">4</span>
-              Hacé clic en confirmar entrada.
+            <li className="flex gap-2.5 items-start">
+              <span className="bg-gray-800 w-5 h-5 rounded-md flex items-center justify-center text-sm font-black text-white shrink-0 border border-gray-700">4</span>
+              <span>Hacé clic en **Confirmar Registro** para guardar.</span>
             </li>
           </ul>
         </div>

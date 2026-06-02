@@ -102,24 +102,18 @@ class PagosListView(ListAPIView):
     def get_queryset(self):
         
         queryset = Pago.objects.all().order_by('-fecha_pago')
-        
-        fecha = self.request.GET.get("fecha")
         filtro = self.request.GET.get("filtro")
-
-        if filtro:
-            inicio, fin = obtener_rango_fechas(filtro)
-
-            if inicio and fin:
-                queryset = queryset.filter(
-                    fecha_pago__date__range=(inicio, fin)
-                )
-
         hoy = timezone.now().date()
 
-        if fecha == "hoy":
+        if filtro == "hoy":
             queryset = queryset.filter(fecha_pago__date=hoy)
-
-        if fecha == "mes":
+        elif filtro == "ayer":
+            ayer = hoy - timezone.timedelta(days=1)
+            queryset = queryset.filter(fecha_pago__date=ayer)
+        elif filtro == "7dias":
+            inicio = hoy - timezone.timedelta(days=7)
+            queryset = queryset.filter(fecha_pago__date__range=(inicio, hoy))
+        elif filtro == "mes":
             queryset = queryset.filter(
                 fecha_pago__month=hoy.month,
                 fecha_pago__year=hoy.year

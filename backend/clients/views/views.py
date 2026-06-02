@@ -115,6 +115,9 @@ class ClienteDetailView(RetrieveUpdateDestroyAPIView):
             "id": cliente.id,
             "nombre": cliente.nombre,
             "telefono": cliente.telefono,
+            "DNI": cliente.dni,
+            "email": cliente.email,
+            "notas": cliente.notas,
             "vehiculos": data_vehiculos,
             "estadias": data_estadias,
             "pagos": data_pagos
