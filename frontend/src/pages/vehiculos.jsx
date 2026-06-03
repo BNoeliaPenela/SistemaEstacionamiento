@@ -408,9 +408,9 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 backdrop-blur-sm">
+    <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 backdrop-blur-sm p-4">
 
-      <div className="bg-white p-6 rounded-2xl shadow-2xl w-96 space-y-4 border-t-4 border-blue-600">
+      <div className="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto space-y-4 border-t-4 border-blue-600 mx-4">
 
         <div>
           <h2 className="text-xl font-bold text-gray-800">Nuevo Vehículo</h2>
@@ -561,7 +561,7 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
 
           <button
             onClick={onClose}
-            className=" text-lg border w-full py-2 rounded"
+            className=" text-lg border border-gray-200 w-full py-2.5 rounded-xl font-bold text-gray-500 hover:bg-gray-50 transition-colors"
           >
             Cancelar
           </button>
