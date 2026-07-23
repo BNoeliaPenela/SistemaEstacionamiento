@@ -1,1 +1,47 @@
+/* ==========================================================================
+   ESTILOS DE IMPRESIÓN PARA LA TICKETERA (XPRINTER) - CORREGIDO
+   ========================================================================== */
+@media print {
+  /* 1. Ocultamos absolutamente todo el sistema de fondo */
+  body * {
+    visibility: hidden;
+  }
+  
 
+  /* 2. Forzamos a que el ticket SÍ exista y sea visible al imprimir */
+  #seccion-ticket-impresion {
+    display: block !important; /* <-- ¡Esto arregla la hoja en blanco! */
+    visibility: visible !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Aseguramos que todo lo que esté adentro del ticket también sea visible */
+  #seccion-ticket-impresion * {
+    visibility: visible !important;
+  }
+  /* Forzamos un salto de página después del ticket para que no se corte */
+  .page-break {
+    display: block !important;
+    clear: both !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Quitamos márgenes molestos del navegador */
+  @page {
+    margin: 0;
+  }
+}
+
+/* En la pantalla normal del navegador se mantiene oculto */
+.hidden-screen-only {
+  display: none;
+}

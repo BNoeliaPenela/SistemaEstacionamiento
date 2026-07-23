@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react"; // Importante: agregamos useEffect
 import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
+import TicketImpresion from "../components/TicketImpresion";
 
 function Entrada() {
+  const navigate = useNavigate();
   const [patente, setPatente] = useState("");
   const [sugerencias, setSugerencias] = useState([]); // Nuevo: para la lista desplegable
   const [vehiculo, setVehiculo] = useState(null);
@@ -9,13 +12,16 @@ function Entrada() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [estadiaParaImprimir, setEstadiaParaImprimir] = useState(null);
+  const [abonaAhora, setAbonaAhora] = useState(false);
 
   const [fechaActual, setFechaActual] = useState(new Date());
 
   const [form, setForm] = useState({
     tipo_estadia: "hora",
     cantidad: 1,
-    precio: "1000"
+    precio: "1000",
+    notas: ""
   });
 
   useEffect(() => {
@@ -124,20 +130,45 @@ function Entrada() {
 
     setLoading(true);
     try {
-      await api.post("/parking/entrada/", {
+      const res = await api.post("/parking/entrada/", {
         vehiculo: vehiculo.id,
         tipo_estadia: form.tipo_estadia,
         cantidad: Number(form.cantidad),
-        precio: Number(form.precio)
+        precio: Number(form.precio),
+        notas: form.notas || ""
       });
 
+      const activos = await api.get("/parking/?activa=true");
+
+
       setSuccessMsg(`¡Entrada registrada con éxito para la patente ${vehiculo.patente}!`);
+      const datosEstadia = {
+        id: res.data?.id || res.data?.estadia?.id,
+        patente: patente.toUpperCase(),
+        tipo_vehiculo: vehiculo?.tipo || vehiculo?.tipo_vehiculo || "xd",
+        marca: vehiculo?.marca || "",
+        modelo: vehiculo?.modelo || "",
+        tipo_estadia: form.tipo_estadia,
+        cantidad: form.cantidad,
+        fecha_entrada: new Date(),
+        fecha_salida_estimada: activos.data[0]?.fecha_salida_estimada || "-", 
+        deuda: Number(form.precio),
+        precio: form.precio,
+        notas: form.notas || ""
+      };
       
-      setVehiculo(null);
-      setPatente("");
-      setForm({ tipo_estadia: "hora", cantidad: 1, precio: "1000" });
-      
-      setTimeout(() => setSuccessMsg(""), 5000);
+      if (abonaAhora) {
+        // Redirigimos a pagos pasándole la estadía en el state EXACTAMENTE como lo hace tu dashboard
+        navigate("/pagos", { state: { estadia: datosEstadia } });
+      } else {
+        // Si no abona ahora, se imprime de forma tradicional el ticket "Pendiente"
+        setEstadiaParaImprimir(datosEstadia);
+        setVehiculo(null);
+        setPatente("");
+        setForm({ tipo_estadia: "hora", cantidad: 1, precio: "1000" });
+        setAbonaAhora(false);
+        setTimeout(() => setSuccessMsg(""), 5000);
+      }
 
     } catch (error) {
       const serverMsg = error.response?.data?.error || "Error al procesar la entrada.";
@@ -277,6 +308,36 @@ function Entrada() {
               placeholder="Ingresá la base estimada"
             />
           </div>
+          <div className="flex flex-col col-span-full">
+            <label className="text-sm font-black text-gray-600 uppercase tracking-wider mb-1 ml-1">
+              Notas / Observaciones (Opcional)
+            </label>
+            <textarea
+              name="notas"
+              rows="2"
+              value={form.notas}
+              onChange={handleChange}
+              placeholder="Ej: El auto ingresa con un raspón en la puerta izquierda, dejó llaves..."
+              className="border border-gray-200 p-3 rounded-xl font-medium text-gray-700 text-sm outline-none focus:border-blue-500 resize-none"
+            />
+          </div>
+
+          {/* CHECKBOX ABONA AHORA*/}
+          <div className="col-span-full flex items-center gap-3 bg-white p-3.5 rounded-xl border border-gray-200/60 mt-1 select-none cursor-pointer" onClick={() => setAbonaAhora(!abonaAhora)}>
+            <input
+              type="checkbox"
+              id="abonaAhora"
+              checked={abonaAhora}
+              onChange={(e) => setAbonaAhora(e.target.checked)}
+              className="w-5 h-5 rounded-lg border-gray-300 text-blue-600 focus:ring-blue-500 pointer-events-none"
+            />
+            <div className="flex flex-col">
+              <label htmlFor="abonaAhora" className="text-sm font-black text-gray-800 uppercase tracking-wide cursor-pointer pointer-events-none">
+                ¿El cliente abona la estadía en este momento?
+              </label>
+              <span className="text-xs text-gray-400 font-bold">Si se marca, redirigirá directamente al panel de cobros.</span>
+            </div>
+          </div>
         </div>
 
         <button
@@ -284,7 +345,7 @@ function Entrada() {
           disabled={botonDeshabilitado}
           className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3.5 rounded-xl font-black text-lg transition-all shadow-md shadow-blue-500/10 disabled:bg-gray-200 disabled:text-gray-400 disabled:shadow-none"
         >
-          {loading ? "Procesando..." : "Confirmar Registro de Entrada"}
+          {loading ? "Procesando..." : abonaAhora ? "Registrar Entrada e Ir a Pagar →" : "Confirmar Registro de Entrada"}
         </button>
       </div>
 
@@ -320,11 +381,22 @@ function Entrada() {
             </li>
             <li className="flex gap-2.5 items-start">
               <span className="bg-gray-800 w-5 h-5 rounded-md flex items-center justify-center text-sm font-black text-white shrink-0 border border-gray-700">4</span>
+              <span>Marcá si paga ahora o dale directo a registrar.</span>
+            </li>
+            <li className="flex gap-2.5 items-start">
+              <span className="bg-gray-800 w-5 h-5 rounded-md flex items-center justify-center text-sm font-black text-white shrink-0 border border-gray-700">4</span>
               <span>Hacé clic en **Confirmar Registro** para guardar.</span>
             </li>
           </ul>
         </div>
       </div>
+      {estadiaParaImprimir && (
+        <TicketImpresion 
+          estadia={estadiaParaImprimir} 
+          tipoTicket="TICKET DE INGRESO"
+          alTerminarImprimir={() => setEstadiaParaImprimir(null)} 
+        />
+      )}
     </div>
   );
 }

@@ -400,7 +400,7 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
     }
 
     if (!form.tipo) {
-      errs.tipo = "Debe seleccionar un tipo (Auto/Moto)";
+      errs.tipo = "Debe seleccionar un tipo (Auto/Moto/Camioneta)";
     }
 
 
@@ -482,6 +482,7 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
             <option value="">Seleccionar tipo</option>
             <option value="auto">Auto</option>
             <option value="moto">Moto</option>
+            <option value="camioneta">Camioneta</option>
           </select>
           {errores.tipo && <p className="text-red-500 text-sm font-bold pl-1">{errores.tipo}</p>}
 
@@ -576,6 +577,7 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
 
 
 function AccionesVehiculoModal({ vehiculo, onClose, onSelect }) {
+  const isDueno = localStorage.getItem('modo_dueno') === 'true';
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center z-50 backdrop-blur-sm">
       <div className="bg-white rounded-lg shadow-2xl w-72 overflow-hidden border-t-4 border-blue-600">
@@ -595,10 +597,12 @@ function AccionesVehiculoModal({ vehiculo, onClose, onSelect }) {
             <span className="text-lg font-medium text-gray-700">Editar información</span>
           </button>
 
-          <button onClick={() => onSelect("eliminar")} className="w-full text-left px-4 py-3 hover:bg-red-50 rounded flex items-center gap-3 transition-colors group">
-            <span className="group-hover:scale-110 transition-transform">🗑️</span>
-            <span className="text-lg font-medium text-red-600">Eliminar vehículo</span>
-          </button>
+          {isDueno && (
+            <button onClick={() => onSelect("eliminar")} className="w-full text-left px-4 py-3 hover:bg-red-50 rounded flex items-center gap-3 transition-colors group">
+              <span className="group-hover:scale-110 transition-transform">🗑️</span>
+              <span className="text-lg font-medium text-red-600">Eliminar vehículo</span>
+            </button>
+          )}
         </div>
 
         <button onClick={onClose} className="w-full py-3 text-md text-gray-400 hover:text-gray-600 font-bold uppercase tracking-widest bg-gray-50 border-t">
@@ -786,6 +790,7 @@ return (
             <select name="tipo" value={form.tipo} onChange={handleChange} className="border-2 border-gray-100 p-2 w-full rounded focus:border-blue-500 outline-none">
                <option value="auto">Auto</option>
                <option value="moto">Moto</option>
+               <option value="camioneta">Camioneta</option>
             </select>
           </div>
         ) : (

@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import ModalPago from "../components/modalPago";
 import { useLocation } from "react-router-dom";
+import TicketImpresion from "../components/TicketImpresion";
+import { createPortal } from "react-dom";
+
+
 
 function Pagos() {
 
@@ -10,6 +14,7 @@ function Pagos() {
   const estadiaPre = location.state?.estadia;
 
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [estadiaParaImprimir, setEstadiaParaImprimir] = useState(null);
   const [estadiaSeleccionada, setEstadiaSeleccionada] = useState(null);
   
   const [pagos, setPagos] = useState([]);
@@ -22,6 +27,7 @@ function Pagos() {
   const [cantidad, setCantidad] = useState(0);
 
   const [generandoPdf, setGenerandoPdf] = useState(false);
+ 
 
   const navigate = useNavigate();
   const [notificacion, setNotificacion] = useState({ mostrar: false, mensaje: "", tipo: "" });
@@ -102,12 +108,7 @@ function Pagos() {
     }
   };
 
-  useEffect(() => {
-    if (estadiaPre) {
-        setEstadiaSeleccionada(estadiaPre);
-        setMostrarModal(true);
-    }
-  }, [estadiaPre]);
+  
 
   useEffect(() => {
     fetchPagos();
@@ -118,6 +119,19 @@ function Pagos() {
     fetchPagos();
   }, [busqueda, filtroFecha]);
 
+  useEffect(() => {
+    if (location.state?.estadia) {
+      // Si vinimos desde Entrada con datos, los cargamos directo en el estado
+      const datosEstadiaRecibidos = location.state.estadia;
+      setEstadiaSeleccionada(datosEstadiaRecibidos);
+      console.log("ESTADIA SELECCIONADA EN MODAL:", datosEstadiaRecibidos);
+      setMostrarModal(true); // Abrimos el modal automáticamente
+      
+      // Limpiamos el state de la simulación para que si recargan la página no se vuelva a abrir
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
   const formatFecha = (fecha) => {
     return new Date(fecha).toLocaleString("es-AR", {
       day: "2-digit",
@@ -127,6 +141,7 @@ function Pagos() {
       minute: "2-digit"
     });
   };
+  const isDueno = localStorage.getItem('modo_dueno') === 'true';
 
   return (
     <div className="space-y-4 relative">
@@ -135,12 +150,15 @@ function Pagos() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-800">Pagos</h1>
         <div className="flex items-center gap-3">
-          <button
-            onClick={handleDescargarReporteCaja}
-            className="flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-all shadow-xs"
-          >
-            🖨️ Imprimir Caja Diaria
-          </button>
+          {isDueno && (
+            <button
+              onClick={handleDescargarReporteCaja}
+              disabled={generandoPdf}
+              className="flex items-center gap-2 bg-slate-800 hover:bg-slate-900 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-all shadow-xs disabled:opacity-50"
+            >
+              {generandoPdf ? "⏳ Generando..." : "🖨️ Imprimir Caja Diaria"}
+            </button>
+          )}
 
           <button
                   onClick={() => {
@@ -163,12 +181,16 @@ function Pagos() {
         <div className="flex gap-4 flex-1 min-w-fit">
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 border-l-8 border-blue-500 flex-1 min-w-[180px]">
             <p className="text-gray-400 font-bold uppercase text-xs tracking-wider">Caja de Hoy</p>
-            <p className="text-3xl font-black text-gray-800">${totalHoy}</p>
+            <p className="text-3xl font-black text-gray-800">
+              {isDueno ? `$${totalHoy}` : "🔒 Oculto"}
+            </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 border-l-8 border-green-500 flex-1 min-w-[180px]">
             <p className="text-gray-400 font-bold uppercase text-xs tracking-wider">Total del Mes</p>
-            <p className="text-3xl font-black text-green-600">${totalMes}</p>
+            <p className="text-3xl font-black text-green-600">
+              {isDueno ? `$${totalMes}` : "🔒 Oculto"}
+            </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 border-l-8 border-purple-500 flex-1 min-w-[150px]">
@@ -251,10 +273,11 @@ function Pagos() {
                   </div>
                 </td>
 
+                {/* 🔒 MONTO CONDICIONAL: Si es Dueño ve el número, si es Empleado ve asteriscos */}
                 <td className={`p-4 text-center font-bold text-base ${
                   p.tipo === 'reverso' ? 'text-red-400 line-through' : 'text-gray-800'
                 }`}>
-                  ${p.monto}
+                  {isDueno ? `$${p.monto}` : "••••"}
                 </td>
 
                 <td className="p-4 text-center text-gray-600 font-medium">
@@ -322,13 +345,28 @@ function Pagos() {
         <ModalPago
           estadiaInicial={estadiaSeleccionada}
           onClose={() => setMostrarModal(false)}
-          onPagoExitoso={(msg) => {
+          onPagoExitoso={(datosEstadia) => {
+            console.log("Datos recibidos del modal en Pagos.jsx:", datosEstadia);
             setMostrarModal(false); 
+            if (datosEstadia && typeof datosEstadia === "object") {
+              setEstadiaParaImprimir(datosEstadia);
+            }
             fetchPagos();
             fetchMetrics();
-            mostrarAlerta(msg || "Pago registrado correctamente ✅");
+            mostrarAlerta("Pago registrado correctamente ✅");
+            
           }}
         />
+      )}
+      {estadiaParaImprimir && (
+        createPortal(
+          <TicketImpresion 
+            estadia={estadiaParaImprimir} 
+            tipoTicket="PAGO"
+            alTerminarImprimir={() => setEstadiaParaImprimir(null)} 
+          />,
+          document.body // <-- Lo manda directo al body de la página, libre de layouts de tablas
+        )
       )}
 
       {/* 🔔 CARTEL DE NOTIFICACIÓN EN EL MEDIO DE ACCIÓN RÁPIDA */}
@@ -343,6 +381,7 @@ function Pagos() {
         </div>
       )}
 
+      
     </div>
   );
 }

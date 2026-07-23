@@ -88,7 +88,7 @@ class BuscarVehiculoView(APIView):
             sugerencias_data.append({
                 "id": v.id,
                 "patente": v.patente,
-                # Usamos getattr por seguridad si los campos no existen en el modelo
+                "tipo": getattr(v, 'tipo', ''),
                 "marca": getattr(v, 'marca', ''), 
                 "modelo": getattr(v, 'modelo', '')
             })

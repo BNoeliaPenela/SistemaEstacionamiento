@@ -28,6 +28,7 @@ class Estadia(models.Model):
     )
 
     activa = models.BooleanField(default=True)
+    notas = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.vehiculo.patente} - {self.fecha_entrada}"

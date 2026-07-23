@@ -1,0 +1,3547 @@
+[
+  {
+    "model": "clients.cliente",
+    "pk": 1,
+    "fields": {
+      "nombre": "Cami",
+      "dni": "49234567",
+      "telefono": "2234567890",
+      "email": "cami@gmail.com",
+      "fecha_creacion": "2026-04-22T13:40:20.765Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 2,
+    "fields": {
+      "nombre": "Prueba",
+      "dni": "21999999",
+      "telefono": "2234567890",
+      "email": "prueba@gmail.com",
+      "fecha_creacion": "2026-04-22T18:24:28.057Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 3,
+    "fields": {
+      "nombre": "Penela Noelia",
+      "dni": "46123537",
+      "telefono": "2236835394",
+      "email": "noebel740@gmail.com",
+      "fecha_creacion": "2026-05-07T18:52:57.207Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 4,
+    "fields": {
+      "nombre": "Penela Gustavo",
+      "dni": "24345678",
+      "telefono": "2234567890",
+      "email": "gus@gmail.com",
+      "fecha_creacion": "2026-05-07T18:53:30.965Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 9,
+    "fields": {
+      "nombre": "Eva",
+      "dni": "32456789",
+      "telefono": "2234325432",
+      "email": "",
+      "fecha_creacion": "2026-05-16T20:05:15.063Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 15,
+    "fields": {
+      "nombre": "Marcelo",
+      "dni": "23456345",
+      "telefono": "2234567890",
+      "email": "",
+      "fecha_creacion": "2026-05-22T21:48:57.894Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 16,
+    "fields": {
+      "nombre": "Alba",
+      "dni": "5976568",
+      "telefono": "2334567890",
+      "email": "",
+      "fecha_creacion": "2026-05-25T14:03:53.469Z",
+      "notas": null
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 17,
+    "fields": {
+      "nombre": "Cristina",
+      "dni": "15234567",
+      "telefono": "2234323214",
+      "email": "",
+      "fecha_creacion": "2026-05-26T15:41:04.613Z",
+      "notas": "Amiga del due\u00f1o"
+    }
+  },
+  {
+    "model": "clients.cliente",
+    "pk": 18,
+    "fields": {
+      "nombre": "Eva",
+      "dni": "13234567",
+      "telefono": "2234567890",
+      "email": "",
+      "fecha_creacion": "2026-06-24T19:10:55.878Z",
+      "notas": ""
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 1,
+    "fields": {
+      "cliente": 1,
+      "patente": "DE345GT",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 2,
+    "fields": {
+      "cliente": 1,
+      "patente": "SE345FI",
+      "marca": "bmw",
+      "modelo": "m4",
+      "color": "blanco",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 7,
+    "fields": {
+      "cliente": 1,
+      "patente": "SD345GR",
+      "marca": "bmw",
+      "modelo": "3r",
+      "color": "gris",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 8,
+    "fields": {
+      "cliente": 1,
+      "patente": "AB234V",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 9,
+    "fields": {
+      "cliente": 1,
+      "patente": "AB234",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 12,
+    "fields": {
+      "cliente": 1,
+      "patente": "AB234VD7",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 13,
+    "fields": {
+      "cliente": 1,
+      "patente": "AB234V6",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 15,
+    "fields": {
+      "cliente": 1,
+      "patente": "AB234V66",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 16,
+    "fields": {
+      "cliente": 1,
+      "patente": "AB234666",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 18,
+    "fields": {
+      "cliente": 3,
+      "patente": "FR567JU",
+      "marca": "bmw",
+      "modelo": "m5",
+      "color": "rojo",
+      "tipo": "moto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 19,
+    "fields": {
+      "cliente": 15,
+      "patente": "WER456",
+      "marca": "chevrolet",
+      "modelo": "prisma",
+      "color": "blanco",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 20,
+    "fields": {
+      "cliente": 16,
+      "patente": "GR567HY",
+      "marca": "bmw",
+      "modelo": "corolla",
+      "color": "rojo",
+      "tipo": "auto",
+      "notas": null
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 21,
+    "fields": {
+      "cliente": 2,
+      "patente": "SW345JK",
+      "marca": "bulgwagen",
+      "modelo": "gola",
+      "color": "azul",
+      "tipo": "auto",
+      "notas": "Tiene seguro"
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 22,
+    "fields": {
+      "cliente": 4,
+      "patente": "AS567HY",
+      "marca": "toyota",
+      "modelo": "corolla",
+      "color": "verde",
+      "tipo": "auto",
+      "notas": "seguro al dia"
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 23,
+    "fields": {
+      "cliente": 4,
+      "patente": "VF342HT",
+      "marca": "chevrolet",
+      "modelo": "prisma",
+      "color": "rojo",
+      "tipo": "camioneta",
+      "notas": "seguro al dia"
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 24,
+    "fields": {
+      "cliente": 15,
+      "patente": "HR345DE",
+      "marca": "rouser",
+      "modelo": "125l",
+      "color": "amarilla",
+      "tipo": "moto",
+      "notas": ""
+    }
+  },
+  {
+    "model": "vehicles.vehiculo",
+    "pk": 25,
+    "fields": {
+      "cliente": 15,
+      "patente": "CD345NH",
+      "marca": "renault",
+      "modelo": "clio",
+      "color": "blanco",
+      "tipo": "camioneta",
+      "notas": "vidrio roto"
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 8,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-05-25T05:00:25.656Z",
+      "fecha_salida_estimada": "2026-05-25T06:00:25.656Z",
+      "fecha_salida_real": "2026-05-25T05:09:33.965Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 9,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-05-25T05:07:01.511Z",
+      "fecha_salida_estimada": "2026-05-29T05:07:01.511Z",
+      "fecha_salida_real": "2026-05-25T05:07:21.146Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 10,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-05-25T05:10:41.727Z",
+      "fecha_salida_estimada": "2026-05-25T06:10:41.727Z",
+      "fecha_salida_real": "2026-06-09T12:57:43.596Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 11,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-05-25T05:19:55.774Z",
+      "fecha_salida_estimada": "2026-05-25T09:19:55.774Z",
+      "fecha_salida_real": "2026-05-25T14:34:15.594Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 12,
+    "fields": {
+      "vehiculo": 2,
+      "fecha_entrada": "2026-05-25T13:24:00.850Z",
+      "fecha_salida_estimada": "2026-05-25T19:24:00.850Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 6,
+      "precio": "1000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 13,
+    "fields": {
+      "vehiculo": 20,
+      "fecha_entrada": "2026-05-25T14:07:55.948Z",
+      "fecha_salida_estimada": "2026-09-22T14:07:55.948Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "mes",
+      "cantidad": 4,
+      "precio": "70000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 15,
+    "fields": {
+      "vehiculo": 23,
+      "fecha_entrada": "2026-06-02T16:17:45.324Z",
+      "fecha_salida_estimada": "2026-06-02T20:17:45.324Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 16,
+    "fields": {
+      "vehiculo": 12,
+      "fecha_entrada": "2026-06-09T12:35:11.228Z",
+      "fecha_salida_estimada": "2026-06-14T12:35:11.228Z",
+      "fecha_salida_real": "2026-07-01T12:58:36.517Z",
+      "tipo_estadia": "dia",
+      "cantidad": 5,
+      "precio": "200000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 17,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-06-30T14:48:13.974Z",
+      "fecha_salida_estimada": "2026-06-30T17:48:13.974Z",
+      "fecha_salida_real": "2026-06-30T14:52:34.882Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 18,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-06-30T14:53:42.214Z",
+      "fecha_salida_estimada": "2026-06-30T18:53:42.214Z",
+      "fecha_salida_real": "2026-07-07T20:48:33.903Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 19,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-06-30T14:59:15.828Z",
+      "fecha_salida_estimada": "2026-06-30T18:59:15.828Z",
+      "fecha_salida_real": "2026-07-07T21:02:55.796Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 20,
+    "fields": {
+      "vehiculo": 13,
+      "fecha_entrada": "2026-06-30T15:00:52.187Z",
+      "fecha_salida_estimada": "2026-06-30T20:00:52.187Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "10000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 21,
+    "fields": {
+      "vehiculo": 22,
+      "fecha_entrada": "2026-06-30T15:03:57.227Z",
+      "fecha_salida_estimada": "2026-06-30T21:03:57.227Z",
+      "fecha_salida_real": "2026-06-30T15:04:52.115Z",
+      "tipo_estadia": "hora",
+      "cantidad": 6,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 22,
+    "fields": {
+      "vehiculo": 22,
+      "fecha_entrada": "2026-06-30T15:05:19.406Z",
+      "fecha_salida_estimada": "2026-06-30T19:05:19.406Z",
+      "fecha_salida_real": "2026-07-08T21:13:34.751Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 23,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-06-30T15:12:56.024Z",
+      "fecha_salida_estimada": "2026-06-30T19:12:56.024Z",
+      "fecha_salida_real": "2026-06-30T15:15:07.781Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 24,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-06-30T15:16:26.401Z",
+      "fecha_salida_estimada": "2026-06-30T19:16:26.401Z",
+      "fecha_salida_real": "2026-06-30T15:21:58.628Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 25,
+    "fields": {
+      "vehiculo": 12,
+      "fecha_entrada": "2026-07-01T13:28:55.649Z",
+      "fecha_salida_estimada": "2026-07-01T17:28:55.649Z",
+      "fecha_salida_real": "2026-07-01T17:36:18.404Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 26,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-01T17:47:32.371Z",
+      "fecha_salida_estimada": "2026-07-01T21:47:32.371Z",
+      "fecha_salida_real": "2026-07-01T17:52:36.809Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 27,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-01T17:52:54.862Z",
+      "fecha_salida_estimada": "2026-07-01T20:52:54.862Z",
+      "fecha_salida_real": "2026-07-01T18:00:11.568Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 28,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-01T18:00:25.473Z",
+      "fecha_salida_estimada": "2026-07-01T21:00:25.473Z",
+      "fecha_salida_real": "2026-07-01T18:08:26.686Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 29,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-01T18:08:36.059Z",
+      "fecha_salida_estimada": "2026-07-01T22:08:36.059Z",
+      "fecha_salida_real": "2026-07-01T18:09:07.934Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 30,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-01T18:09:36.313Z",
+      "fecha_salida_estimada": "2026-07-01T22:09:36.313Z",
+      "fecha_salida_real": "2026-07-08T21:12:12.245Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 31,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-02T18:13:53.567Z",
+      "fecha_salida_estimada": "2026-07-02T22:13:53.567Z",
+      "fecha_salida_real": "2026-07-02T18:35:56.045Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 32,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-02T18:36:56.028Z",
+      "fecha_salida_estimada": "2026-07-02T22:36:56.028Z",
+      "fecha_salida_real": "2026-07-08T21:11:25.445Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 33,
+    "fields": {
+      "vehiculo": 7,
+      "fecha_entrada": "2026-07-02T18:53:43.686Z",
+      "fecha_salida_estimada": "2026-07-02T23:53:43.686Z",
+      "fecha_salida_real": "2026-07-08T21:04:36.824Z",
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 34,
+    "fields": {
+      "vehiculo": 8,
+      "fecha_entrada": "2026-07-04T20:00:43.075Z",
+      "fecha_salida_estimada": "2026-07-05T00:00:43.075Z",
+      "fecha_salida_real": "2026-07-08T21:04:20.637Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 35,
+    "fields": {
+      "vehiculo": 12,
+      "fecha_entrada": "2026-07-04T20:11:40.152Z",
+      "fecha_salida_estimada": "2026-07-10T20:11:40.152Z",
+      "fecha_salida_real": "2026-07-07T20:36:20.432Z",
+      "tipo_estadia": "dia",
+      "cantidad": 6,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 36,
+    "fields": {
+      "vehiculo": 9,
+      "fecha_entrada": "2026-07-04T20:16:57.359Z",
+      "fecha_salida_estimada": "2026-07-05T01:16:57.359Z",
+      "fecha_salida_real": "2026-07-08T21:01:51.636Z",
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 37,
+    "fields": {
+      "vehiculo": 15,
+      "fecha_entrada": "2026-07-04T20:18:47.536Z",
+      "fecha_salida_estimada": "2026-07-05T01:18:47.536Z",
+      "fecha_salida_real": "2026-07-07T20:13:17.194Z",
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 38,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-06T17:45:37.668Z",
+      "fecha_salida_estimada": "2026-07-06T21:45:37.668Z",
+      "fecha_salida_real": "2026-07-06T17:58:43.983Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 39,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-06T17:59:14.045Z",
+      "fecha_salida_estimada": "2026-07-06T22:59:14.045Z",
+      "fecha_salida_real": "2026-07-06T18:06:28.045Z",
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 40,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-06T18:06:44.818Z",
+      "fecha_salida_estimada": "2026-07-06T22:06:44.818Z",
+      "fecha_salida_real": "2026-07-06T18:07:15.234Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 41,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-06T18:07:31.194Z",
+      "fecha_salida_estimada": "2026-07-06T19:07:31.194Z",
+      "fecha_salida_real": "2026-07-06T18:11:01.544Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 42,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-06T18:11:16.938Z",
+      "fecha_salida_estimada": "2026-07-06T22:11:16.938Z",
+      "fecha_salida_real": "2026-07-06T18:23:14.364Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 43,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-06T18:23:46.375Z",
+      "fecha_salida_estimada": "2026-07-06T23:23:46.375Z",
+      "fecha_salida_real": "2026-07-07T20:12:13.019Z",
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 44,
+    "fields": {
+      "vehiculo": 12,
+      "fecha_entrada": "2026-07-07T20:42:41.489Z",
+      "fecha_salida_estimada": "2026-09-05T20:42:41.489Z",
+      "fecha_salida_real": "2026-07-08T20:59:32.674Z",
+      "tipo_estadia": "mes",
+      "cantidad": 2,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 45,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-07-07T20:49:02.461Z",
+      "fecha_salida_estimada": "2026-07-11T20:49:02.461Z",
+      "fecha_salida_real": "2026-07-07T20:49:17.022Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 46,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-07-07T20:49:30.567Z",
+      "fecha_salida_estimada": "2026-07-11T20:49:30.567Z",
+      "fecha_salida_real": "2026-07-08T20:59:08.837Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 47,
+    "fields": {
+      "vehiculo": 15,
+      "fecha_entrada": "2026-07-07T20:53:56.164Z",
+      "fecha_salida_estimada": "2026-07-11T20:53:56.164Z",
+      "fecha_salida_real": "2026-07-08T20:58:28.738Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 48,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-07T20:59:42.533Z",
+      "fecha_salida_estimada": "2026-07-11T20:59:42.533Z",
+      "fecha_salida_real": "2026-07-08T02:36:59.089Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 49,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-07T21:03:05.281Z",
+      "fecha_salida_estimada": "2026-07-08T01:03:05.281Z",
+      "fecha_salida_real": "2026-07-07T23:45:49.078Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 50,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-07T23:46:04.700Z",
+      "fecha_salida_estimada": "2026-07-11T23:46:04.700Z",
+      "fecha_salida_real": "2026-07-07T23:51:04.967Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 51,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-07T23:51:28.981Z",
+      "fecha_salida_estimada": "2026-07-11T23:51:28.981Z",
+      "fecha_salida_real": "2026-07-07T23:52:34.935Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 52,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-07T23:52:45.876Z",
+      "fecha_salida_estimada": "2026-07-08T02:52:45.876Z",
+      "fecha_salida_real": "2026-07-08T02:04:36.072Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 53,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T02:04:49.092Z",
+      "fecha_salida_estimada": "2026-07-08T05:04:49.092Z",
+      "fecha_salida_real": "2026-07-08T03:03:57.265Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "13000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 54,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-08T02:37:12.540Z",
+      "fecha_salida_estimada": "2026-07-12T02:37:12.540Z",
+      "fecha_salida_real": "2026-07-08T02:41:36.661Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 55,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-08T02:41:47.959Z",
+      "fecha_salida_estimada": "2026-07-11T02:41:47.959Z",
+      "fecha_salida_real": "2026-07-08T02:54:37.236Z",
+      "tipo_estadia": "dia",
+      "cantidad": 3,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 56,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-08T02:54:49.184Z",
+      "fecha_salida_estimada": "2026-07-12T02:54:49.184Z",
+      "fecha_salida_real": "2026-07-08T03:00:12.663Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 57,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-08T03:00:23.468Z",
+      "fecha_salida_estimada": "2026-07-09T03:00:23.468Z",
+      "fecha_salida_real": "2026-07-08T20:30:19.360Z",
+      "tipo_estadia": "dia",
+      "cantidad": 1,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 58,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:04:08.350Z",
+      "fecha_salida_estimada": "2026-07-11T03:04:08.350Z",
+      "fecha_salida_real": "2026-07-08T03:06:57.713Z",
+      "tipo_estadia": "dia",
+      "cantidad": 3,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 59,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:07:10.136Z",
+      "fecha_salida_estimada": "2026-07-11T03:07:10.136Z",
+      "fecha_salida_real": "2026-07-08T03:07:33.080Z",
+      "tipo_estadia": "dia",
+      "cantidad": 3,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 60,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:07:44.097Z",
+      "fecha_salida_estimada": "2026-07-11T03:07:44.097Z",
+      "fecha_salida_real": "2026-07-08T03:10:53.331Z",
+      "tipo_estadia": "dia",
+      "cantidad": 3,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 61,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:11:15.801Z",
+      "fecha_salida_estimada": "2026-07-12T03:11:15.801Z",
+      "fecha_salida_real": "2026-07-08T03:13:00.530Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 62,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:13:13.028Z",
+      "fecha_salida_estimada": "2026-07-10T03:13:13.028Z",
+      "fecha_salida_real": "2026-07-08T03:21:08.414Z",
+      "tipo_estadia": "dia",
+      "cantidad": 2,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 63,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:21:20.239Z",
+      "fecha_salida_estimada": "2026-07-11T03:21:20.239Z",
+      "fecha_salida_real": "2026-07-08T03:23:07.576Z",
+      "tipo_estadia": "dia",
+      "cantidad": 3,
+      "precio": "130000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 64,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:23:16.143Z",
+      "fecha_salida_estimada": "2026-07-08T04:23:16.143Z",
+      "fecha_salida_real": "2026-07-08T03:39:43.130Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "14000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 65,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:40:01.049Z",
+      "fecha_salida_estimada": "2026-07-08T07:40:01.049Z",
+      "fecha_salida_real": "2026-07-08T03:40:31.793Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 66,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:40:41.765Z",
+      "fecha_salida_estimada": "2026-07-08T04:40:41.765Z",
+      "fecha_salida_real": "2026-07-08T03:46:11.005Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "16000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 67,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:46:30.805Z",
+      "fecha_salida_estimada": "2026-07-08T06:46:30.805Z",
+      "fecha_salida_real": "2026-07-08T03:46:56.515Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "17000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 68,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:47:07.026Z",
+      "fecha_salida_estimada": "2026-07-08T06:47:07.026Z",
+      "fecha_salida_real": "2026-07-08T03:51:27.548Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "18000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 69,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:51:39.837Z",
+      "fecha_salida_estimada": "2026-07-08T08:51:39.837Z",
+      "fecha_salida_real": "2026-07-08T03:54:00.798Z",
+      "tipo_estadia": "hora",
+      "cantidad": 5,
+      "precio": "19000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 70,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T03:54:17.855Z",
+      "fecha_salida_estimada": "2026-07-12T03:54:17.855Z",
+      "fecha_salida_real": "2026-07-08T04:01:42.227Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 71,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T04:01:53.921Z",
+      "fecha_salida_estimada": "2026-07-08T13:01:53.921Z",
+      "fecha_salida_real": "2026-07-08T04:02:15.686Z",
+      "tipo_estadia": "hora",
+      "cantidad": 9,
+      "precio": "14000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 72,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T04:02:25.787Z",
+      "fecha_salida_estimada": "2026-07-08T08:02:25.787Z",
+      "fecha_salida_real": "2026-07-08T04:02:54.314Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 73,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T04:03:03.688Z",
+      "fecha_salida_estimada": "2026-07-08T08:03:03.688Z",
+      "fecha_salida_real": "2026-07-08T20:29:17.236Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "160000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 74,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T20:31:54.044Z",
+      "fecha_salida_estimada": "2026-07-11T20:31:54.044Z",
+      "fecha_salida_real": "2026-07-08T20:34:12.714Z",
+      "tipo_estadia": "dia",
+      "cantidad": 3,
+      "precio": "50000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 75,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-08T20:32:36.646Z",
+      "fecha_salida_estimada": "2026-09-06T20:32:36.646Z",
+      "fecha_salida_real": "2026-07-08T20:58:03.816Z",
+      "tipo_estadia": "mes",
+      "cantidad": 2,
+      "precio": "200000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 76,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T20:34:27.495Z",
+      "fecha_salida_estimada": "2026-07-09T00:34:27.495Z",
+      "fecha_salida_real": "2026-07-08T20:49:32.841Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "30000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 77,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T20:50:04.495Z",
+      "fecha_salida_estimada": "2026-07-14T20:50:04.495Z",
+      "fecha_salida_real": "2026-07-08T20:57:23.223Z",
+      "tipo_estadia": "dia",
+      "cantidad": 6,
+      "precio": "40000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 78,
+    "fields": {
+      "vehiculo": 22,
+      "fecha_entrada": "2026-07-08T21:13:49.316Z",
+      "fecha_salida_estimada": "2026-07-09T00:13:49.316Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "30000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 79,
+    "fields": {
+      "vehiculo": 7,
+      "fecha_entrada": "2026-07-08T21:16:17.470Z",
+      "fecha_salida_estimada": "2026-07-08T22:16:17.470Z",
+      "fecha_salida_real": "2026-07-08T21:31:37.703Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 80,
+    "fields": {
+      "vehiculo": 7,
+      "fecha_entrada": "2026-07-08T21:31:49.977Z",
+      "fecha_salida_estimada": "2026-07-09T00:31:49.977Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "120000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 81,
+    "fields": {
+      "vehiculo": 8,
+      "fecha_entrada": "2026-07-08T21:32:34.218Z",
+      "fecha_salida_estimada": "2026-07-08T22:32:34.218Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 82,
+    "fields": {
+      "vehiculo": 9,
+      "fecha_entrada": "2026-07-08T21:34:50.113Z",
+      "fecha_salida_estimada": "2026-07-09T00:34:50.113Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "10000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 83,
+    "fields": {
+      "vehiculo": 12,
+      "fecha_entrada": "2026-07-08T21:40:33.615Z",
+      "fecha_salida_estimada": "2026-07-09T01:40:33.615Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "120000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 84,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-08T21:45:30.396Z",
+      "fecha_salida_estimada": "2026-07-09T01:45:30.396Z",
+      "fecha_salida_real": "2026-07-09T14:30:18.687Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 85,
+    "fields": {
+      "vehiculo": 15,
+      "fecha_entrada": "2026-07-08T21:48:17.465Z",
+      "fecha_salida_estimada": "2026-07-09T01:48:17.465Z",
+      "fecha_salida_real": "2026-07-20T18:17:40.957Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 86,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-08T21:49:07.378Z",
+      "fecha_salida_estimada": "2026-07-08T22:49:07.378Z",
+      "fecha_salida_real": "2026-07-23T13:19:45.811Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 87,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-07-09T13:51:54.069Z",
+      "fecha_salida_estimada": "2026-07-09T16:51:54.069Z",
+      "fecha_salida_real": "2026-07-09T15:16:53.648Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "120000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 88,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-09T13:52:19.004Z",
+      "fecha_salida_estimada": "2026-07-09T17:52:19.004Z",
+      "fecha_salida_real": "2026-07-09T14:46:11.354Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "40000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 89,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-09T14:13:13.838Z",
+      "fecha_salida_estimada": "2026-07-09T18:13:13.838Z",
+      "fecha_salida_real": "2026-07-09T14:14:08.573Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "11000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 90,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-09T14:14:20.822Z",
+      "fecha_salida_estimada": "2026-07-09T18:14:20.822Z",
+      "fecha_salida_real": "2026-07-09T14:17:45.758Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 91,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-09T14:17:59.377Z",
+      "fecha_salida_estimada": "2026-07-09T18:17:59.377Z",
+      "fecha_salida_real": "2026-07-09T14:39:50.172Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "11000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 92,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-09T14:31:00.206Z",
+      "fecha_salida_estimada": "2026-07-09T18:31:00.206Z",
+      "fecha_salida_real": "2026-07-09T14:32:48.202Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 93,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-09T14:40:09.725Z",
+      "fecha_salida_estimada": "2026-07-09T15:40:09.725Z",
+      "fecha_salida_real": "2026-07-09T14:41:31.292Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 94,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-09T14:41:40.192Z",
+      "fecha_salida_estimada": "2026-07-09T15:41:40.192Z",
+      "fecha_salida_real": "2026-07-09T14:42:05.513Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 95,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-09T14:46:25.173Z",
+      "fecha_salida_estimada": "2026-07-09T17:46:25.173Z",
+      "fecha_salida_real": "2026-07-09T14:52:35.982Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "2000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 96,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-09T14:52:48.953Z",
+      "fecha_salida_estimada": "2026-07-09T15:52:48.953Z",
+      "fecha_salida_real": "2026-07-09T15:04:00.008Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 97,
+    "fields": {
+      "vehiculo": 19,
+      "fecha_entrada": "2026-07-09T15:04:42.261Z",
+      "fecha_salida_estimada": "2026-07-09T16:04:42.261Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": true,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 98,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-07-09T15:17:01.563Z",
+      "fecha_salida_estimada": "2026-07-09T16:17:01.563Z",
+      "fecha_salida_real": "2026-07-09T15:24:13.039Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 99,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-07-09T15:24:19.557Z",
+      "fecha_salida_estimada": "2026-07-09T16:24:19.557Z",
+      "fecha_salida_real": "2026-07-09T15:26:11.982Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 100,
+    "fields": {
+      "vehiculo": 18,
+      "fecha_entrada": "2026-07-09T15:26:36.959Z",
+      "fecha_salida_estimada": "2026-07-09T16:26:36.959Z",
+      "fecha_salida_real": "2026-07-22T18:36:23.026Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 101,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-10T21:02:17.681Z",
+      "fecha_salida_estimada": "2026-07-10T22:02:17.681Z",
+      "fecha_salida_real": "2026-07-10T21:03:58.127Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 102,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-10T21:04:18.412Z",
+      "fecha_salida_estimada": "2026-07-10T22:04:18.412Z",
+      "fecha_salida_real": "2026-07-10T21:04:58.616Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 103,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-10T22:00:54.460Z",
+      "fecha_salida_estimada": "2026-07-10T23:00:54.460Z",
+      "fecha_salida_real": "2026-07-10T22:02:02.903Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 104,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-10T22:02:55.515Z",
+      "fecha_salida_estimada": "2026-07-10T23:02:55.515Z",
+      "fecha_salida_real": "2026-07-11T19:53:10.943Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 105,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-11T19:53:19.368Z",
+      "fecha_salida_estimada": "2026-07-11T20:53:19.368Z",
+      "fecha_salida_real": "2026-07-11T19:56:17.776Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 106,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-11T19:56:31.507Z",
+      "fecha_salida_estimada": "2026-07-11T20:56:31.507Z",
+      "fecha_salida_real": "2026-07-11T19:56:59.944Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 107,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-11T19:57:12.590Z",
+      "fecha_salida_estimada": "2026-07-11T20:57:12.590Z",
+      "fecha_salida_real": "2026-07-11T19:57:22.559Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 108,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-11T19:57:28.637Z",
+      "fecha_salida_estimada": "2026-07-11T20:57:28.637Z",
+      "fecha_salida_real": "2026-07-11T19:57:43.517Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 109,
+    "fields": {
+      "vehiculo": 21,
+      "fecha_entrada": "2026-07-11T19:57:49.289Z",
+      "fecha_salida_estimada": "2026-07-11T20:57:49.289Z",
+      "fecha_salida_real": "2026-07-20T18:16:35.475Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "1000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 110,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-20T17:35:36.973Z",
+      "fecha_salida_estimada": "2026-07-20T18:35:36.973Z",
+      "fecha_salida_real": "2026-07-20T17:39:00.355Z",
+      "tipo_estadia": "hora",
+      "cantidad": 1,
+      "precio": "10000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 111,
+    "fields": {
+      "vehiculo": 1,
+      "fecha_entrada": "2026-07-20T17:39:35.942Z",
+      "fecha_salida_estimada": "2026-07-24T17:39:35.942Z",
+      "fecha_salida_real": "2026-07-20T17:42:28.111Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "12000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 112,
+    "fields": {
+      "vehiculo": 24,
+      "fecha_entrada": "2026-07-20T18:19:34.545Z",
+      "fecha_salida_estimada": "2026-07-20T21:19:34.545Z",
+      "fecha_salida_real": "2026-07-20T18:19:47.135Z",
+      "tipo_estadia": "hora",
+      "cantidad": 3,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 113,
+    "fields": {
+      "vehiculo": 24,
+      "fecha_entrada": "2026-07-20T18:25:34.861Z",
+      "fecha_salida_estimada": "2026-07-20T22:25:34.861Z",
+      "fecha_salida_real": "2026-07-20T18:25:43.798Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "15000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 114,
+    "fields": {
+      "vehiculo": 24,
+      "fecha_entrada": "2026-07-20T18:34:14.297Z",
+      "fecha_salida_estimada": "2026-07-24T18:34:14.297Z",
+      "fecha_salida_real": "2026-07-20T18:34:20.048Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "20000.00",
+      "activa": false,
+      "notas": null
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 115,
+    "fields": {
+      "vehiculo": 24,
+      "fecha_entrada": "2026-07-20T19:00:55.395Z",
+      "fecha_salida_estimada": "2026-07-20T23:00:55.395Z",
+      "fecha_salida_real": "2026-07-22T17:52:26.439Z",
+      "tipo_estadia": "hora",
+      "cantidad": 4,
+      "precio": "13000.00",
+      "activa": false,
+      "notas": "espejito roto"
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 116,
+    "fields": {
+      "vehiculo": 25,
+      "fecha_entrada": "2026-07-22T18:18:03.361Z",
+      "fecha_salida_estimada": "2026-08-01T18:18:03.361Z",
+      "fecha_salida_real": "2026-07-22T18:20:55.207Z",
+      "tipo_estadia": "dia",
+      "cantidad": 10,
+      "precio": "30000.00",
+      "activa": false,
+      "notas": "rayon en la puerta izquierda"
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 117,
+    "fields": {
+      "vehiculo": 25,
+      "fecha_entrada": "2026-07-22T18:22:05.056Z",
+      "fecha_salida_estimada": "2026-08-01T18:22:05.056Z",
+      "fecha_salida_real": "2026-07-22T18:32:31.882Z",
+      "tipo_estadia": "dia",
+      "cantidad": 10,
+      "precio": "30000.00",
+      "activa": false,
+      "notas": "rayon en puerta"
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 118,
+    "fields": {
+      "vehiculo": 25,
+      "fecha_entrada": "2026-07-22T18:36:46.781Z",
+      "fecha_salida_estimada": "2026-07-26T18:36:46.781Z",
+      "fecha_salida_real": "2026-07-22T18:36:53.179Z",
+      "tipo_estadia": "dia",
+      "cantidad": 4,
+      "precio": "30000.00",
+      "activa": false,
+      "notas": ""
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 119,
+    "fields": {
+      "vehiculo": 25,
+      "fecha_entrada": "2026-07-22T18:37:10.497Z",
+      "fecha_salida_estimada": "2026-07-27T18:37:10.497Z",
+      "fecha_salida_real": "2026-07-22T18:37:32.941Z",
+      "tipo_estadia": "dia",
+      "cantidad": 5,
+      "precio": "50000.00",
+      "activa": false,
+      "notas": ""
+    }
+  },
+  {
+    "model": "parking.estadia",
+    "pk": 120,
+    "fields": {
+      "vehiculo": 16,
+      "fecha_entrada": "2026-07-23T13:22:14.757Z",
+      "fecha_salida_estimada": "2026-07-29T13:22:14.757Z",
+      "fecha_salida_real": null,
+      "tipo_estadia": "dia",
+      "cantidad": 6,
+      "precio": "15000.00",
+      "activa": true,
+      "notas": ""
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 29,
+    "fields": {
+      "estadia": 8,
+      "monto": "10000.00",
+      "fecha_pago": "2026-05-25T05:06:16.427Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 30,
+    "fields": {
+      "estadia": 9,
+      "monto": "10000.00",
+      "fecha_pago": "2026-05-25T05:07:21.128Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 31,
+    "fields": {
+      "estadia": 8,
+      "monto": "-10000.00",
+      "fecha_pago": "2026-05-25T05:07:58.048Z",
+      "metodo_pago": "efectivo",
+      "tipo": "reverso",
+      "pago_original": 29
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 32,
+    "fields": {
+      "estadia": 8,
+      "monto": "20000.00",
+      "fecha_pago": "2026-05-25T05:08:43.897Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 33,
+    "fields": {
+      "estadia": 10,
+      "monto": "10000.00",
+      "fecha_pago": "2026-05-25T05:10:49.777Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 34,
+    "fields": {
+      "estadia": 10,
+      "monto": "-10000.00",
+      "fecha_pago": "2026-05-25T05:10:58.051Z",
+      "metodo_pago": "efectivo",
+      "tipo": "reverso",
+      "pago_original": 33
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 35,
+    "fields": {
+      "estadia": 10,
+      "monto": "20000.00",
+      "fecha_pago": "2026-05-25T05:11:14.551Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 36,
+    "fields": {
+      "estadia": 10,
+      "monto": "-20000.00",
+      "fecha_pago": "2026-05-25T05:12:28.120Z",
+      "metodo_pago": "efectivo",
+      "tipo": "reverso",
+      "pago_original": 35
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 37,
+    "fields": {
+      "estadia": 11,
+      "monto": "10000.00",
+      "fecha_pago": "2026-05-25T05:20:20.969Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 38,
+    "fields": {
+      "estadia": 10,
+      "monto": "15000.00",
+      "fecha_pago": "2026-05-25T13:21:55.997Z",
+      "metodo_pago": "transferencia",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 39,
+    "fields": {
+      "estadia": 12,
+      "monto": "10000.00",
+      "fecha_pago": "2026-05-25T13:51:14.323Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 40,
+    "fields": {
+      "estadia": 12,
+      "monto": "-10000.00",
+      "fecha_pago": "2026-05-25T13:53:08.963Z",
+      "metodo_pago": "efectivo",
+      "tipo": "reverso",
+      "pago_original": 39
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 41,
+    "fields": {
+      "estadia": 13,
+      "monto": "70000.00",
+      "fecha_pago": "2026-05-27T15:41:36.059Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 42,
+    "fields": {
+      "estadia": 13,
+      "monto": "-70000.00",
+      "fecha_pago": "2026-05-27T15:44:24.400Z",
+      "metodo_pago": "efectivo",
+      "tipo": "reverso",
+      "pago_original": 41
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 43,
+    "fields": {
+      "estadia": 13,
+      "monto": "70000.00",
+      "fecha_pago": "2026-06-08T19:57:32.286Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 44,
+    "fields": {
+      "estadia": 15,
+      "monto": "50000.00",
+      "fecha_pago": "2026-06-09T12:13:37.673Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 45,
+    "fields": {
+      "estadia": 12,
+      "monto": "200000.00",
+      "fecha_pago": "2026-06-09T12:31:16.249Z",
+      "metodo_pago": "transferencia",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 46,
+    "fields": {
+      "estadia": 17,
+      "monto": "10000.00",
+      "fecha_pago": "2026-06-30T14:52:34.865Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 47,
+    "fields": {
+      "estadia": 21,
+      "monto": "1000.00",
+      "fecha_pago": "2026-06-30T15:04:52.109Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 48,
+    "fields": {
+      "estadia": 23,
+      "monto": "10000.00",
+      "fecha_pago": "2026-06-30T15:15:07.758Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 49,
+    "fields": {
+      "estadia": 24,
+      "monto": "10000.00",
+      "fecha_pago": "2026-06-30T15:21:58.604Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 50,
+    "fields": {
+      "estadia": 16,
+      "monto": "200000.00",
+      "fecha_pago": "2026-07-01T12:58:36.492Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 51,
+    "fields": {
+      "estadia": 25,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T17:35:27.355Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 52,
+    "fields": {
+      "estadia": 22,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T17:45:14.102Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 53,
+    "fields": {
+      "estadia": 26,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T17:52:36.787Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 54,
+    "fields": {
+      "estadia": 27,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T18:00:11.550Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 55,
+    "fields": {
+      "estadia": 28,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T18:08:26.664Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 56,
+    "fields": {
+      "estadia": 29,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T18:08:43.541Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 57,
+    "fields": {
+      "estadia": 30,
+      "monto": "11000.00",
+      "fecha_pago": "2026-07-01T18:09:44.790Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 58,
+    "fields": {
+      "estadia": 20,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T18:10:09.829Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 59,
+    "fields": {
+      "estadia": 19,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-01T18:32:18.505Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 60,
+    "fields": {
+      "estadia": 31,
+      "monto": "11000.00",
+      "fecha_pago": "2026-07-02T18:14:02.007Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 61,
+    "fields": {
+      "estadia": 32,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-02T18:36:59.300Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 62,
+    "fields": {
+      "estadia": 33,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-02T18:53:50.708Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 63,
+    "fields": {
+      "estadia": 34,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-04T20:00:48.543Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 64,
+    "fields": {
+      "estadia": 35,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-04T20:11:41.658Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 65,
+    "fields": {
+      "estadia": 36,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-04T20:16:59.255Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 66,
+    "fields": {
+      "estadia": 37,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-04T20:18:48.662Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 67,
+    "fields": {
+      "estadia": 38,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-06T17:45:39.077Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 68,
+    "fields": {
+      "estadia": 39,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-06T17:59:15.346Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 69,
+    "fields": {
+      "estadia": 40,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-06T18:06:45.887Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 70,
+    "fields": {
+      "estadia": 41,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-06T18:07:34.092Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 71,
+    "fields": {
+      "estadia": 42,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-06T18:11:18.367Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 72,
+    "fields": {
+      "estadia": 43,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-06T18:23:47.866Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 73,
+    "fields": {
+      "estadia": 44,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-07T20:42:51.396Z",
+      "metodo_pago": "transferencia",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 74,
+    "fields": {
+      "estadia": 18,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-07T20:44:20.607Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 75,
+    "fields": {
+      "estadia": 45,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-07T20:49:03.842Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 76,
+    "fields": {
+      "estadia": 48,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-07T20:59:55.611Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 77,
+    "fields": {
+      "estadia": 47,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-07T21:02:22.927Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 78,
+    "fields": {
+      "estadia": 49,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-07T21:03:06.326Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 79,
+    "fields": {
+      "estadia": 46,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-07T21:27:20.761Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 80,
+    "fields": {
+      "estadia": 50,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-07T23:46:15.743Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 81,
+    "fields": {
+      "estadia": 51,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-07T23:51:37.238Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 82,
+    "fields": {
+      "estadia": 52,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-07T23:52:51.963Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 83,
+    "fields": {
+      "estadia": 53,
+      "monto": "13000.00",
+      "fecha_pago": "2026-07-08T02:04:57.013Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 84,
+    "fields": {
+      "estadia": 54,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T02:37:21.243Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 85,
+    "fields": {
+      "estadia": 55,
+      "monto": "120001.00",
+      "fecha_pago": "2026-07-08T02:42:11.175Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 86,
+    "fields": {
+      "estadia": 56,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T02:54:53.538Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 87,
+    "fields": {
+      "estadia": 57,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:00:29.913Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 88,
+    "fields": {
+      "estadia": 58,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T03:04:18.395Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 89,
+    "fields": {
+      "estadia": 59,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T03:07:14.425Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 90,
+    "fields": {
+      "estadia": 60,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:07:51.565Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 91,
+    "fields": {
+      "estadia": 60,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:08:14.573Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 92,
+    "fields": {
+      "estadia": 60,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:08:26.401Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 93,
+    "fields": {
+      "estadia": 60,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:09:00.608Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 94,
+    "fields": {
+      "estadia": 61,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T03:11:29.741Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 95,
+    "fields": {
+      "estadia": 62,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:13:19.483Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 96,
+    "fields": {
+      "estadia": 63,
+      "monto": "130000.00",
+      "fecha_pago": "2026-07-08T03:21:32.337Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 97,
+    "fields": {
+      "estadia": 64,
+      "monto": "14000.00",
+      "fecha_pago": "2026-07-08T03:23:20.265Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 98,
+    "fields": {
+      "estadia": 65,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-08T03:40:10.999Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 99,
+    "fields": {
+      "estadia": 66,
+      "monto": "16000.00",
+      "fecha_pago": "2026-07-08T03:40:46.467Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 100,
+    "fields": {
+      "estadia": 67,
+      "monto": "17000.00",
+      "fecha_pago": "2026-07-08T03:46:43.504Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 101,
+    "fields": {
+      "estadia": 68,
+      "monto": "18000.00",
+      "fecha_pago": "2026-07-08T03:47:13.464Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 102,
+    "fields": {
+      "estadia": 69,
+      "monto": "19000.00",
+      "fecha_pago": "2026-07-08T03:51:48.928Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 103,
+    "fields": {
+      "estadia": 70,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-08T03:56:36.306Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 104,
+    "fields": {
+      "estadia": 71,
+      "monto": "14000.00",
+      "fecha_pago": "2026-07-08T04:02:01.555Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 105,
+    "fields": {
+      "estadia": 72,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-08T04:02:30.417Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 106,
+    "fields": {
+      "estadia": 73,
+      "monto": "160000.00",
+      "fecha_pago": "2026-07-08T04:03:04.970Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 107,
+    "fields": {
+      "estadia": 75,
+      "monto": "200000.00",
+      "fecha_pago": "2026-07-08T20:33:35.594Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 108,
+    "fields": {
+      "estadia": 74,
+      "monto": "50000.00",
+      "fecha_pago": "2026-07-08T20:33:53.705Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 109,
+    "fields": {
+      "estadia": 76,
+      "monto": "30000.00",
+      "fecha_pago": "2026-07-08T20:34:34.501Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 110,
+    "fields": {
+      "estadia": 77,
+      "monto": "40000.00",
+      "fecha_pago": "2026-07-08T20:50:05.737Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 111,
+    "fields": {
+      "estadia": 78,
+      "monto": "30000.00",
+      "fecha_pago": "2026-07-08T21:13:58.832Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 112,
+    "fields": {
+      "estadia": 79,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-08T21:16:22.282Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 113,
+    "fields": {
+      "estadia": 80,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T21:31:56.298Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 114,
+    "fields": {
+      "estadia": 81,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-08T21:32:35.190Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 115,
+    "fields": {
+      "estadia": 82,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-08T21:34:51.231Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 116,
+    "fields": {
+      "estadia": 83,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T21:40:34.561Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 117,
+    "fields": {
+      "estadia": 84,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-08T21:45:31.219Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 118,
+    "fields": {
+      "estadia": 85,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-08T21:48:30.882Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 119,
+    "fields": {
+      "estadia": 87,
+      "monto": "120000.00",
+      "fecha_pago": "2026-07-09T13:51:55.099Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 120,
+    "fields": {
+      "estadia": 88,
+      "monto": "40000.00",
+      "fecha_pago": "2026-07-09T13:52:55.876Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 121,
+    "fields": {
+      "estadia": 86,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T13:53:26.474Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 122,
+    "fields": {
+      "estadia": 89,
+      "monto": "11000.00",
+      "fecha_pago": "2026-07-09T14:13:14.524Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 123,
+    "fields": {
+      "estadia": 90,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-09T14:14:28.454Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 124,
+    "fields": {
+      "estadia": 91,
+      "monto": "11000.00",
+      "fecha_pago": "2026-07-09T14:18:00.997Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 125,
+    "fields": {
+      "estadia": 92,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-09T14:31:01.713Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 126,
+    "fields": {
+      "estadia": 93,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T14:40:10.809Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 127,
+    "fields": {
+      "estadia": 94,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T14:42:05.490Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 128,
+    "fields": {
+      "estadia": 95,
+      "monto": "2000.00",
+      "fecha_pago": "2026-07-09T14:46:26.327Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 129,
+    "fields": {
+      "estadia": 96,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T15:00:59.823Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 130,
+    "fields": {
+      "estadia": 98,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T15:17:05.427Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 131,
+    "fields": {
+      "estadia": 99,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T15:24:20.568Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 132,
+    "fields": {
+      "estadia": 97,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T15:24:39.320Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 133,
+    "fields": {
+      "estadia": 100,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-09T15:26:40.712Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 134,
+    "fields": {
+      "estadia": 101,
+      "monto": "1020.00",
+      "fecha_pago": "2026-07-10T21:03:11.720Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 135,
+    "fields": {
+      "estadia": 102,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-10T21:04:19.434Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 136,
+    "fields": {
+      "estadia": 103,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-10T22:01:07.454Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 137,
+    "fields": {
+      "estadia": 104,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-11T19:50:09.499Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 138,
+    "fields": {
+      "estadia": 105,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-11T19:53:21.473Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 139,
+    "fields": {
+      "estadia": 106,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-11T19:56:37.123Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 140,
+    "fields": {
+      "estadia": 107,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-11T19:57:13.312Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 141,
+    "fields": {
+      "estadia": 108,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-11T19:57:33.329Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 142,
+    "fields": {
+      "estadia": 109,
+      "monto": "1000.00",
+      "fecha_pago": "2026-07-11T19:57:55.987Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 143,
+    "fields": {
+      "estadia": 110,
+      "monto": "10000.00",
+      "fecha_pago": "2026-07-20T17:37:25.927Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 144,
+    "fields": {
+      "estadia": 111,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-20T17:39:54.394Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 145,
+    "fields": {
+      "estadia": 111,
+      "monto": "-12000.00",
+      "fecha_pago": "2026-07-20T17:40:41.273Z",
+      "metodo_pago": "efectivo",
+      "tipo": "reverso",
+      "pago_original": 144
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 146,
+    "fields": {
+      "estadia": 111,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-20T17:41:44.630Z",
+      "metodo_pago": "transferencia",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 147,
+    "fields": {
+      "estadia": 111,
+      "monto": "-12000.00",
+      "fecha_pago": "2026-07-20T17:42:00.789Z",
+      "metodo_pago": "transferencia",
+      "tipo": "reverso",
+      "pago_original": 146
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 148,
+    "fields": {
+      "estadia": 111,
+      "monto": "12000.00",
+      "fecha_pago": "2026-07-20T17:42:28.105Z",
+      "metodo_pago": "transferencia",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 149,
+    "fields": {
+      "estadia": 112,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-20T18:19:47.121Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 150,
+    "fields": {
+      "estadia": 113,
+      "monto": "15000.00",
+      "fecha_pago": "2026-07-20T18:25:43.792Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 151,
+    "fields": {
+      "estadia": 114,
+      "monto": "20000.00",
+      "fecha_pago": "2026-07-20T18:34:20.024Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 152,
+    "fields": {
+      "estadia": 115,
+      "monto": "13000.00",
+      "fecha_pago": "2026-07-22T17:52:26.433Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 153,
+    "fields": {
+      "estadia": 116,
+      "monto": "30000.00",
+      "fecha_pago": "2026-07-22T18:19:37.579Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 154,
+    "fields": {
+      "estadia": 117,
+      "monto": "30000.00",
+      "fecha_pago": "2026-07-22T18:32:31.865Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 155,
+    "fields": {
+      "estadia": 118,
+      "monto": "30000.00",
+      "fecha_pago": "2026-07-22T18:36:53.165Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  },
+  {
+    "model": "payments.pago",
+    "pk": 156,
+    "fields": {
+      "estadia": 119,
+      "monto": "50000.00",
+      "fecha_pago": "2026-07-22T18:37:11.540Z",
+      "metodo_pago": "efectivo",
+      "tipo": "pago",
+      "pago_original": null
+    }
+  }
+]

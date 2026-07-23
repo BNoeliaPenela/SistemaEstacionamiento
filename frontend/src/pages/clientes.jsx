@@ -17,7 +17,7 @@ function Clientes() {
 
     setNotificacion({ mostrar: true, mensaje: msj, tipo });
 
-    // ⏱️ Definimos los tiempos en milisegundos
+    // Definimos los tiempos en milisegundos
     // Éxito: 1.5 segundos (rápido y fluido) | Error: 4.5 segundos (da tiempo a leer)
     const tiempoDuracion = tipo === "success" ? 1500 : 2500;
 
@@ -260,6 +260,7 @@ const imprimirFichaCliente = async (clienteId) => {
   };
 
 function AccionesModal({ cliente, onClose, onSelect }) {
+  const isDueno = localStorage.getItem('modo_dueno') === 'true';
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50">
 
@@ -280,9 +281,12 @@ function AccionesModal({ cliente, onClose, onSelect }) {
           🖨️ Imprimir Ficha
         </button>
 
-        <button onClick={() => onSelect("eliminar")} className="w-full text-left py-2 px-3 text-lg font-bold text-red-500 hover:bg-red-50 rounded-xl transition-colors">
-          🗑️ Eliminar
-        </button>
+        {/* CONDICIÓN DE SEGURIDAD: Solo si es dueño, se muestra el botón de Eliminar */}
+          {isDueno && (
+              <button onClick={() => onSelect("eliminar")} className="w-full text-left py-2 px-3 text-lg text-red-600 hover:bg-red-50 rounded-xl transition-colors font-semibold flex items-center gap-2">
+                  🗑️ Eliminar
+              </button>
+        )}
         
 
         <button onClick={onClose} className="w-full mt-2 py-2 text-lg font-bold text-gray-400 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-center">

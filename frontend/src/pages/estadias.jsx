@@ -98,7 +98,8 @@ function Estadias() {
       month: "2-digit",
       year: "numeric",
       hour: "2-digit",
-      minute: "2-digit"
+      minute: "2-digit",
+      hour12: false
     });
   };
 
@@ -356,6 +357,7 @@ function Estadias() {
 export default Estadias;
 
 function AccionesModal({ estadia, onClose, onSelect }) {
+  const isDueno = localStorage.getItem('modo_dueno') === 'true';
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-xs flex justify-center items-center z-50">
       <div className="bg-white p-5 rounded-2xl shadow-xl w-72 border border-gray-100 mx-4 space-y-1">
@@ -371,9 +373,11 @@ function AccionesModal({ estadia, onClose, onSelect }) {
           ✏️ Editar estadía
         </button>
 
-        <button onClick={() => onSelect("eliminar")} className="w-full text-left px-3 py-2.5 text-lg font-bold text-red-500 hover:bg-red-50 rounded-xl transition-colors flex items-center gap-2">
-          🗑️ Eliminar registro
-        </button>
+        {isDueno && (
+          <button onClick={() => onSelect("eliminar")} className="w-full text-left px-3 py-2.5 text-lg font-bold text-red-500 hover:bg-red-50 rounded-xl transition-colors flex items-center gap-2">
+            🗑️ Eliminar registro
+          </button>
+        )}
         
         <div className="pt-2">
           <button onClick={onClose} className="w-full border border-gray-200 py-2 rounded-xl font-bold text-md text-gray-400 hover:bg-gray-50 transition-colors uppercase tracking-wider">
@@ -388,7 +392,14 @@ function AccionesModal({ estadia, onClose, onSelect }) {
 function DetallesModal({ estadia, onClose }) {
 
   const formatFecha = (fecha) => {
-    return new Date(fecha).toLocaleString("es-AR");
+    return new Date(fecha).toLocaleString("es-AR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
   };
 
   return (
@@ -409,6 +420,13 @@ function DetallesModal({ estadia, onClose }) {
             <p className="flex justify-between border-b border-gray-50 pb-1.5"><b>Salida Estimada:</b> <span className="font-medium text-blue-600">{formatFecha(estadia.fecha_salida_estimada)}</span></p>
           ) : (
             <p className="flex justify-between border-b border-gray-50 pb-1.5"><b>Salida Real:</b> <span className="font-medium text-gray-700">{formatFecha(estadia.fecha_salida_real)}</span></p>
+          )}
+
+          {estadia.notas && (
+            <div className="bg-gray-50 p-3 rounded-xl border border-gray-100 flex flex-col gap-1 mt-2">
+              <span className="text-xs font-black text-gray-400 uppercase tracking-wider">Notas / Observaciones:</span>
+              <p className="text-md font-medium text-gray-700 whitespace-pre-wrap">{estadia.notas}</p>
+            </div>
           )}
 
           <div className={`p-3 rounded-xl flex justify-between items-center mt-4 ${
@@ -437,10 +455,14 @@ function DetallesModal({ estadia, onClose }) {
 
 function EditarModal({ estadia, onClose, onSuccess }) {
 
+  const isDueno = localStorage.getItem('modo_dueno') === 'true';
+  const yaEstaPaga = Number(estadia.deuda) === 0;
+
   const [form, setForm] = useState({
     tipo_estadia: estadia.tipo_estadia,
     cantidad: estadia.cantidad,
-    precio: estadia.precio
+    precio: estadia.precio,
+    notas: estadia.notas || ""
   });
 
   const [loading, setLoading] = useState(false);
@@ -500,11 +522,30 @@ function EditarModal({ estadia, onClose, onSuccess }) {
 
           <div className="flex flex-col gap-1">
             <label className="text-md font-bold text-gray-400 uppercase ml-1">Precio total ($)</label>
-            <input
-              type="number"
-              value={form.precio}
-              onChange={(e) => setForm({ ...form, precio: e.target.value })}
-              className="border border-gray-200 p-2.5 rounded-xl text-md font-medium bg-gray-50 focus:outline-hidden focus:border-blue-500 w-full"
+            {(!yaEstaPaga || isDueno) ? (
+              // Si NO está paga (es deuda), o si el usuario es DUEÑO, se muestra el input normal para editar/ver
+              <input 
+                type="number"
+                value={form.precio}
+                onChange={(e) => setForm({ ...form, precio: e.target.value })}
+                className="border border-gray-200 p-2 rounded-xl focus:outline-none focus:border-purple-500"
+              />
+            ) : (
+              // Si YA está paga y es un EMPLEADO, bloquear la visualización por completo
+              <div className="bg-gray-50 border border-gray-100 text-gray-400 p-2 rounded-xl font-bold flex items-center gap-2 select-none">
+                🔒 Monto oculto (Ya abonado)
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="text-md font-bold text-gray-400 uppercase ml-1">Notas / Observaciones</label>
+            <textarea
+              value={form.notas}
+              onChange={(e) => setForm({ ...form, notas: e.target.value })}
+              placeholder="Ej: El cliente dejó las llaves, seguro vigente, etc..."
+              rows="3"
+              className="border border-gray-200 p-2.5 rounded-xl text-md font-medium bg-gray-50 focus:outline-hidden focus:border-blue-500 w-full resize-none focus:ring-4 focus:ring-blue-500/10 transition-all"
             />
           </div>
         </div>

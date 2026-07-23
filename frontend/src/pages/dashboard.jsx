@@ -3,15 +3,22 @@ import api from "../api/axios";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-    const [data, setData] = useState(null); // State para almacenar los datos del dashboard
-    const [vehiculos, setVehiculos] = useState([]);
-    const [actividad, setActividad] = useState([]);
-    const [generandoPdf, setGenerandoPdf] = useState(false);
+  const [data, setData] = useState(null); // State para almacenar los datos del dashboard
+  const [vehiculos, setVehiculos] = useState([]);
+  const [actividad, setActividad] = useState([]);
+  const [generandoPdf, setGenerandoPdf] = useState(false);
 
-    const navigate = useNavigate();
+  const [busqueda, setBusqueda] = useState("");
 
-    useEffect(() => {
-    fetchDashboard();
+  const navigate = useNavigate();
+
+  const handleIrASalida = (vehiculoActivo) => {
+    // Pasamos el objeto completo bajo la clave 'estadia'
+    navigate("/salida", { state: { estadia: vehiculoActivo } });
+  };
+
+  useEffect(() => {
+  fetchDashboard();
   }, []);
 
   const fetchDashboard = async () => {
@@ -82,20 +89,7 @@ function Dashboard() {
   };
 
 
-  /*const getColor = (tipo) => {
-    switch (tipo) {
-        case "entrada":
-        return "text-blue-600";
-        case "salida":
-        return "text-red-500";
-        case "pago":
-        return "text-green-600";
-        case "reverso":
-        return "text-yellow-600";
-        default:
-        return "text-gray-600";
-    }
-  };*/
+
 
   // Función para descargar el PDF de autos estacionados
   const imprimirAutosEstacionados = async () => {
@@ -128,6 +122,20 @@ function Dashboard() {
     );
   }
 
+  // Filtrado de vehículos según la patente ingresada
+  const vehiculosFiltrados = vehiculos.filter((v) =>
+    v.patente.toLowerCase().includes(busqueda.trim().toLowerCase())
+  );
+
+  if (!data) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <p className="text-gray-400 font-black text-sm tracking-widest uppercase animate-pulse">Cargando panel...</p>
+      </div>
+    );
+  }
+
+  const isDueno = localStorage.getItem('modo_dueno') === 'true';
   return (
     <div className="space-y-8">
 
@@ -143,13 +151,17 @@ function Dashboard() {
         {/* INGRESOS HOY */}
         <div className="bg-white p-6 rounded-2xl shadow-xs border border-gray-100 border-l-8 border-emerald-500">
           <p className="text-gray-400 font-bold uppercase text-md tracking-wider">Ingresos hoy</p>
-          <h2 className="text-3xl font-black text-emerald-600 mt-1">${data.ingresos_hoy}</h2>
+          <h2 className="text-3xl font-black text-emerald-600 mt-1">
+            {isDueno ? `$${data.ingresos_hoy}` : "🔒 Oculto"}
+          </h2>
         </div>
 
         {/* INGRESOS MES */}
         <div className="bg-white p-6 rounded-2xl shadow-xs border border-gray-100 border-l-8 border-blue-500">
           <p className="text-gray-400 font-bold uppercase text-md tracking-wider">Ingresos mes</p>
-          <h2 className="text-3xl font-black text-blue-600 mt-1">${data.ingresos_mes}</h2>
+          <h2 className="text-3xl font-black text-blue-600 mt-1">
+            {isDueno ? `$${data.ingresos_mes}` : "🔒 Oculto"}
+          </h2>
         </div>
 
         {/* VEHÍCULOS ACTIVOS */}
@@ -195,9 +207,31 @@ function Dashboard() {
             </button>
           </div>
 
+          {/*BUSCADOR DE PATENTE RÁPIDO */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 font-bold">
+              🔍
+            </div>
+            <input
+              type="text"
+              placeholder="Buscar por patente (Ej: AA123...)"
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value.toUpperCase())}
+              className="w-full pl-10 pr-10 py-2.5 bg-gray-50 border border-gray-200 rounded-xl font-bold uppercase text-gray-800 placeholder:normal-case placeholder:font-normal placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all text-lg"
+            />
+            {busqueda && (
+              <button
+                onClick={() => setBusqueda("")}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 font-bold text-sm"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+
           {/* CONTENEDOR DE TARJETAS DE AUTOS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-h-[540px] overflow-y-auto pr-1">
-            {vehiculos.map(v => {
+            {vehiculosFiltrados.map(v => {
               const esALiquidar = v.deuda === null;
               const estaPagado = v.deuda <= 0;
 
@@ -255,7 +289,7 @@ function Dashboard() {
                     )}
                     
                     <button
-                      onClick={() => navigate("/salida")}
+                      onClick={() => handleIrASalida(v)}
                       className="bg-white hover:bg-red-50 border border-gray-200 hover:border-red-200 text-gray-700 hover:text-red-600 px-3 py-1.5 rounded-lg text-md font-bold transition-all"
                     >
                       Salida
@@ -265,6 +299,21 @@ function Dashboard() {
                 </div>
               );
             })}
+
+            {/* MENSAJE SI NO HAY RESULTADOS DE BÚSQUEDA */}
+            {vehiculos.length > 0 && vehiculosFiltrados.length === 0 && (
+              <div className="col-span-full text-center py-12 bg-gray-50/50 rounded-xl border border-dashed border-gray-200">
+                <p className="text-gray-500 font-bold text-sm">
+                  No se encontró ningún vehículo activo con la patente "{busqueda}".
+                </p>
+                <button
+                  onClick={() => setBusqueda("")}
+                  className="mt-2 text-indigo-600 font-extrabold text-xs hover:underline uppercase tracking-wider"
+                >
+                  Limpiar búsqueda
+                </button>
+              </div>
+            )}
 
             {vehiculos.length === 0 && (
               <p className="col-span-2 text-center text-md text-gray-400 font-medium py-12">

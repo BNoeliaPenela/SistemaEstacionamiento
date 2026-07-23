@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 import api from "../api/axios";
+import TicketImpresion from "../components/TicketImpresion";
 
 
 function Salida() {
+
+  const location = useLocation();
 
   const [patente, setPatente] = useState("");
   const [sugerencias, setSugerencias] = useState([]);
@@ -11,10 +15,29 @@ function Salida() {
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [estadiaParaImprimir, setEstadiaParaImprimir] = useState(null);
+
   
 
   // 🕒 Reloj en tiempo real
   const [fechaActual, setFechaActual] = useState(new Date());
+
+  useEffect(() => {
+    const estadiaPrecargada = location.state?.estadia;
+    if (estadiaPrecargada) {
+      // Mapeamos el objeto para asegurar que cumpla con lo que espera el botón de egreso: data.vehiculo_id
+      // Como tu JSON del dashboard devuelve "vehiculo": 21, se lo asignamos a vehiculo_id
+      const vehiculoAdaptado = {
+        ...estadiaPrecargada,
+        vehiculo_id: estadiaPrecargada.vehiculo_id || estadiaPrecargada.vehiculo
+      };
+
+      setData(vehiculoAdaptado);
+      setPatente(vehiculoAdaptado.patente);
+      setSugerencias([]);
+      setErrorMsg("");
+    }
+  }, [location.state]);
 
   
   useEffect(() => {
@@ -99,6 +122,42 @@ function Salida() {
 
     setLoading(true);
     try {
+
+      let tipoEstadia = "Estadía";
+      let cantidad = 1;
+      let marcaVehiculo = data.marca || "";
+      let modeloVehiculo = data.modelo || "";
+      let colorVehiculo = data.color || "";
+      let tipoVehiculo = data.tipo || data.tipo_vehiculo || "Auto";
+      let notasEstadia = data.notas || "";
+
+      try {
+        const resEstadia = await api.get(`/parking/?activa=true&search=${data.patente}`);
+        // Si la API devuelve un array y encuentra la estadía activa:
+        if (resEstadia.data && resEstadia.data.length > 0) {
+          const estadiaActiva = resEstadia.data[0];
+          tipoEstadia = estadiaActiva.tipo_estadia || "Estadía";
+          cantidad = estadiaActiva.cantidad || 1;
+
+        }
+      } catch (errCtrl) {
+        console.error("No se pudieron recuperar detalles de la estadía para el ticket", errCtrl);
+        // No bloqueamos el flujo, si falla cae en los valores por defecto
+      }
+
+      if (!marcaVehiculo && data.vehiculo_id) {
+        try {
+          const resVehiculo = await api.get(`vehicles/${data.vehiculo_id}/`);
+          if (resVehiculo.data) {
+            marcaVehiculo = resVehiculo.data.marca || "";
+            modeloVehiculo = resVehiculo.data.modelo || "";
+            colorVehiculo = resVehiculo.data.color || "";
+            tipoVehiculo = resVehiculo.data.tipo_vehiculo || resVehiculo.data.tipo || "Auto";
+          }
+        } catch (errVehiculo) {
+          console.error("No se pudo recuperar el detalle del vehículo por ID", errVehiculo);
+        }
+      }
       await api.post("/parking/egreso/", {
         vehiculo: data.vehiculo_id,
         precio: data.deuda,
@@ -107,6 +166,22 @@ function Salida() {
 
       setSuccessMsg(`¡Salida registrada con éxito para la patente ${data.patente}!`);
       
+      setEstadiaParaImprimir({
+        id: data.id || data.estadia?.id,
+        patente: data.patente,
+        tipo_vehiculo: tipoVehiculo,
+        marca: marcaVehiculo,
+        modelo: modeloVehiculo,
+        color: colorVehiculo,
+        tipo_estadia: tipoEstadia,
+        cantidad: cantidad,
+        fecha_entrada: data.fecha_entrada,
+        fecha_salida_real: new Date(), // Saliendo ahora
+        deuda: 0, 
+        precio: data.deuda > 0 ? data.deuda : data.precio,
+        notas: notasEstadia
+      });
+
       // Resetear estados del formulario
       setData(null);
       setPatente("");
@@ -123,7 +198,8 @@ function Salida() {
 
   
   
-    return (
+  return (
+    
     
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       
@@ -215,8 +291,19 @@ function Salida() {
                 <p className="text-indigo-600 font-black">{calcularDuracion(data.fecha_entrada)}</p>
               </div>
             </div>
+            {/* NOTAS / OBSERVACIONES DE LA ESTADÍA */}
+            {data.notas && (
+              <div className="bg-amber-50/60 border border-amber-200/60 p-3.5 rounded-xl space-y-1">
+                <span className="text-xs font-black text-amber-800 uppercase tracking-wider flex items-center gap-1">
+                  <span>📌</span> Notas / Observaciones:
+                </span>
+                <p className="text-sm font-semibold text-amber-950 whitespace-pre-wrap">
+                  {data.notas}
+                </p>
+              </div>
+            )}
 
-            {/* 🔄 CONDICIONAL SEGÚN SI YA ESTÁ PAGO O TIENE DEUDA */}
+            {/* CONDICIONAL SEGÚN SI YA ESTÁ PAGO O TIENE DEUDA */}
             {data.deuda === 0 && data.info_pago ? (
               /* 🟢 VISTA SI YA FUE PAGADO PREVIAMENTE */
               <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl space-y-2">
@@ -326,6 +413,13 @@ function Salida() {
         </div>
 
       </div>
+      {estadiaParaImprimir && (
+        <TicketImpresion 
+          estadia={estadiaParaImprimir} 
+          tipoTicket="SALIDA"
+          alTerminarImprimir={() => setEstadiaParaImprimir(null)} 
+        />
+      )}
 
     </div>
   );

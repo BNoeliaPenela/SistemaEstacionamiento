@@ -36,6 +36,8 @@ class EstadiaSerializer(serializers.ModelSerializer): #Definición de un seriali
         return super().create(validated_data)
 
     def validate(self, data):
+        if self.instance and set(data.keys()) == {'notas'}:
+            return data
 
         vehiculo = data.get("vehiculo")
 
