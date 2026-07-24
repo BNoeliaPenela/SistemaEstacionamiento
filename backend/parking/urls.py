@@ -1,5 +1,6 @@
 from django.urls import path
 
+from parking.views.pinDueno import cambiar_pin_dueno, validar_pin_dueno
 from parking.views.activarLicenciaView import ActivarLicenciaView
 from parking.views.vehiculoActivoView import VehiculoActivoView
 from parking.views.estadiaDetailView import EstadiaDetailView
@@ -20,4 +21,6 @@ urlpatterns = [
     path('<int:pk>/', EstadiaDetailView.as_view()),
     path('vehiculo-activo/', VehiculoActivoView.as_view()),
     path('licencia/activar/', ActivarLicenciaView.as_view(), name='activar_licencia'),
+    path('configuracion/validar-pin/', validar_pin_dueno, name='validar_pin'),
+    path('configuracion/cambiar-pin/', cambiar_pin_dueno, name='cambiar_pin'),
 ]

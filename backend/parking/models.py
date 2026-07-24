@@ -113,4 +113,9 @@ class ConfigLicencia(models.Model):
     def __str__(self):
         return f"Licencia válida hasta: {self.fecha_limite}"
 
-    
+
+class Configuracion(models.Model):
+    pin_dueno = models.CharField(max_length=10, default="1234")
+
+    def __str__(self):
+        return f"Configuración del Garaje (PIN: {self.pin_dueno})"
