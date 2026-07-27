@@ -48,6 +48,29 @@ function Dashboard() {
     });
   };
 
+  // Helper para verificar si una estadía está vencida
+  const esEstadiaVencida = (vehiculo) => {
+  // 1. Extraemos la fecha de salida estimada que viene de la API/Backend
+  const fechaSalidaRaw =
+    vehiculo.fecha_salida_estimada ||
+    vehiculo.salida_estimada ||
+    vehiculo.fecha_salida ||
+    vehiculo.fecha_estimada;
+
+  if (!fechaSalidaRaw) return false;
+
+  // 2. Convertimos la fecha estimada recibida a un objeto Date de JS
+  const fechaEstimada = new Date(fechaSalidaRaw);
+  if (isNaN(fechaEstimada.getTime())) return false;
+
+  // 3. 🎯 AQUÍ SE HACE LA COMPARACIÓN:
+  // Se obtiene el momento exacto actual con `new Date()` (o `.getTime()`)
+  // y se verifica si la hora actual es posterior (mayor) a la fecha estimada.
+  const ahora = new Date();
+
+  return ahora.getTime() > fechaEstimada.getTime();
+};
+
   const getActividadEstilos = (tipo) => {
     switch (tipo) {
       case "entrada":
@@ -234,9 +257,17 @@ function Dashboard() {
             {vehiculosFiltrados.map(v => {
               const esALiquidar = v.deuda === null;
               const estaPagado = v.deuda <= 0;
-
+              const vencida = esEstadiaVencida(v);
+              console.log(`Patente: ${v.patente} | Salida Est: ${v.fecha_salida_estimada} | Vencida: ${vencida}`);
               return (
-                <div key={v.id} className="bg-gray-50/50 hover:bg-gray-50 border border-gray-100 p-4 rounded-xl flex justify-between items-center transition-all">
+                <div 
+                  key={v.id} 
+                  className={`p-4 rounded-xl flex justify-between items-center transition-all border ${
+                    vencida 
+                      ? "bg-red-50/80 border-red-200 shadow-xs" 
+                      : "bg-gray-50/50 hover:bg-gray-100 border-gray-100"
+                  }`}
+                >
                   
                   <div className="space-y-1">
                     <div className="flex items-baseline gap-2">

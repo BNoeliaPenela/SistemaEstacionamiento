@@ -400,7 +400,7 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
     }
 
     if (!form.tipo) {
-      errs.tipo = "Debe seleccionar un tipo (Auto/Moto/Camioneta)";
+      errs.tipo = "Debe seleccionar un tipo (Auto/Moto/Camioneta/Camion)";
     }
 
 
@@ -483,6 +483,7 @@ function CrearVehiculoModal({ onClose, onSuccess, mostrarAlerta, notificacion })
             <option value="auto">Auto</option>
             <option value="moto">Moto</option>
             <option value="camioneta">Camioneta</option>
+            <option value="camion">Camion</option>
           </select>
           {errores.tipo && <p className="text-red-500 text-sm font-bold pl-1">{errores.tipo}</p>}
 
@@ -791,6 +792,7 @@ return (
                <option value="auto">Auto</option>
                <option value="moto">Moto</option>
                <option value="camioneta">Camioneta</option>
+               <option value="camion">Camion</option>
             </select>
           </div>
         ) : (
